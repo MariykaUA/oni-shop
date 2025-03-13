@@ -64,15 +64,17 @@ export default defineComponent({
         
     }
     .carType {
-        background-color: rgb(198, 97, 97);
+        background-color: hsl(31, 77%, 52%);
         display: flex;
         flex-direction: column;
+        padding: 2rem;
     }
     h2 {
         color: hsl(0, 0%, 95%);
         font-family: 'Lexend Deca', sans-serif;
         font-weight: 700;
         margin: 0;
+        margin-bottom: 1rem;
         padding: 0;
     }
     p {
@@ -81,6 +83,7 @@ export default defineComponent({
         font-size: 1rem;
         font-weight: 400;
         margin: 0;
+        margin-bottom: 1.5rem;
         padding: 0;
     }
     
