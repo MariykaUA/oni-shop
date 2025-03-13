@@ -61,6 +61,12 @@ export default defineComponent({
     button {
         all: unset;
         background-color:  hsl(0, 0%, 95%);
+        color: hsl(31, 77%, 52%);        
+        cursor: pointer;
+        padding: 12px 24px;
+        border-radius: 2rem;
+        text-align: center;
+        width: 6rem;
         
     }
     .carType {
@@ -76,6 +82,10 @@ export default defineComponent({
         margin: 0;
         margin-bottom: 1rem;
         padding: 0;
+    }
+    img {
+        color: hsl(0, 0%, 95%);
+        margin-bottom: 1rem;
     }
     p {
         color: hsla(0, 0%, 100%, 0.75);
