@@ -41,7 +41,7 @@ export default defineComponent({
                 id: 3,
                 imgSrc: '../assets/icon-luxury.svg',
                 name: 'Luxury',
-                description: 'Cruise  in the best car brands without the bloated prices. Enjoy the enhanced comfort of a luxury rental and arrive in style.',
+                description: 'Cruise in the best car brands without the bloated prices. Enjoy the enhanced comfort of a luxury rental and arrive in style.',
                 buttonText: 'Learn More',
             },
         ]);
