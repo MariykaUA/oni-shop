@@ -1,6 +1,6 @@
 <template>
     <div>
-        <div v-for="carType in carTypes" :key="carType.id">
+        <div class="carType" v-for="carType in carTypes" :key="carType.id">
             <img :src="carType.imgSrc" alt="Car Type Icon" :key="carType.id"/>
             <h2>{{ carType.name }}</h2>
             <p>{{ carType.description }}</p>
@@ -57,5 +57,31 @@ export default defineComponent({
 </script>
 
 <style lang="scss" scoped>
-
+@import url('https://fonts.googleapis.com/css2?family=Lexend+Deca:wght@100..900&display=swap');
+    button {
+        all: unset;
+        background-color:  hsl(0, 0%, 95%);
+        
+    }
+    .carType {
+        background-color: rgb(198, 97, 97);
+        display: flex;
+        flex-direction: column;
+    }
+    h2 {
+        color: hsl(0, 0%, 95%);
+        font-family: 'Lexend Deca', sans-serif;
+        font-weight: 700;
+        margin: 0;
+        padding: 0;
+    }
+    p {
+        color: hsla(0, 0%, 100%, 0.75);
+        font-family: 'Lexend Deca', sans-serif;
+        font-size: 1rem;
+        font-weight: 400;
+        margin: 0;
+        padding: 0;
+    }
+    
 </style>
