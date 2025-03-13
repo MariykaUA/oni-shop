@@ -1,6 +1,14 @@
+<script>
+import CarType from '~/components/CarType.vue'
+export default {
+  components: {
+    CarType,
+  },
+};
+</script>
+
 <template>
   <div>
-    <NuxtRouteAnnouncer />
-    <NuxtWelcome />
+    <CarType />
   </div>
 </template>
