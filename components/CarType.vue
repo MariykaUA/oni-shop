@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div class="carTypes">
         <div class="carType" v-for="carType in carTypes" :key="carType.id">
             <img :src="carType.imgSrc" alt="Car Type Icon" :key="carType.id"/>
             <h2>{{ carType.name }}</h2>
@@ -58,6 +58,11 @@ export default defineComponent({
 
 <style lang="scss" scoped>
 @import url('https://fonts.googleapis.com/css2?family=Lexend+Deca:wght@100..900&display=swap');
+    div .carTypes {
+        display: flex;
+        justify-content: space-around;
+        margin: 3rem;
+    }
     button {
         all: unset;
         background-color:  hsl(0, 0%, 95%);
