@@ -6,7 +6,8 @@
             <img :src="carType.imgSrc" alt="Car Type Icon" :key="carType.id"/>
             <h2>{{ carType.name }}</h2>
             <p>{{ carType.description }}</p>
-            <button v-if="carType.buttonText">{{ carType.buttonText }}</button>
+            <button v-if="carType.buttonText"
+            :style="{color: getColor(carType.id - 1) }">{{ carType.buttonText }}</button>
         </div>
     </div>
 </template>
@@ -61,9 +62,8 @@ export default defineComponent({
     return {
       carTypes,
       addCarType,
-      getColor,
+      getColor,  
     };
-
     },
 });
 </script>
