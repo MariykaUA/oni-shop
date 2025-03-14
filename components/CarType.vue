@@ -1,6 +1,8 @@
 <template>
     <div class="carTypes">
-        <div class="carType" v-for="carType in carTypes" :key="carType.id">
+        <div class="carType" v-for="carType in carTypes" 
+        :key="carType.id" 
+        :style="{ backgroundColor: getColor(carType.id - 1) }">
             <img :src="carType.imgSrc" alt="Car Type Icon" :key="carType.id"/>
             <h2>{{ carType.name }}</h2>
             <p>{{ carType.description }}</p>
@@ -46,33 +48,52 @@ export default defineComponent({
             },
         ]);
 
-        return {
-            carTypes,
-            addCarType: (carType: CarType) => {
-                carTypes.value.push(carType);
-            },
-        };
+    const colors = ['hsl(31, 77%, 52%)', 'hsl(184, 100%, 22%)', 'hsl(179, 100%, 13%)'];
+
+    const getColor = (index: number): string => {
+      return colors[index % colors.length];
+    };
+
+    const addCarType = (carType: CarType) => {
+      carTypes.value.push(carType);
+    };
+
+    return {
+      carTypes,
+      addCarType,
+      getColor,
+    };
+
     },
 });
 </script>
 
 <style lang="scss" scoped>
 @import url('https://fonts.googleapis.com/css2?family=Lexend+Deca:wght@100..900&display=swap');
-    div .carTypes {
-        display: flex;
-        justify-content: space-around;
-        margin: 3rem;
-    }
+$mobile-screen: 375px;
+$desktop-screen: 1440px;
+
     button {
         all: unset;
-        background-color:  hsl(0, 0%, 95%);
-        color: hsl(31, 77%, 52%);        
+        background-color:  hsl(0, 0%, 95%);       
         cursor: pointer;
-        padding: 12px 24px;
+        padding: 12px 18px;
         border-radius: 2rem;
         text-align: center;
         width: 6rem;
         
+    }
+    div .carTypes {
+        @media (max-width: $mobile-screen) {
+            display: flex;
+            flex-direction: column;
+            margin: 4rem 2rem;
+        }
+        @media (min-width: $mobile-screen) {
+            display: flex;
+            justify-content: space-around;
+            margin: 8rem 10rem;
+        }
     }
     .carType {
         background-color: hsl(31, 77%, 52%);
@@ -85,21 +106,27 @@ export default defineComponent({
         font-family: 'Lexend Deca', sans-serif;
         font-weight: 700;
         margin: 0;
-        margin-bottom: 1rem;
+        margin-bottom: 2rem;
         padding: 0;
     }
     img {
         color: hsl(0, 0%, 95%);
-        margin-bottom: 1rem;
+        margin-bottom: 2rem;
     }
     p {
         color: hsla(0, 0%, 100%, 0.75);
         font-family: 'Lexend Deca', sans-serif;
         font-size: 1rem;
         font-weight: 400;
+        line-height: 170%;
         margin: 0;
-        margin-bottom: 1.5rem;
+        margin-bottom: 2rem;
         padding: 0;
+        width: 85%;
+
+        @media (min-width: $mobile-screen) {
+            margin-bottom: 3rem;
+        }
     }
     
 </style>
