@@ -91,7 +91,7 @@ $desktop-screen: 1440px;
         }
         @media (min-width: $mobile-screen) {
             display: flex;
-            justify-content: space-around;
+            justify-content: center;
             margin: 8rem 10rem;
         }
     }
@@ -100,6 +100,11 @@ $desktop-screen: 1440px;
         display: flex;
         flex-direction: column;
         padding: 2rem;
+
+        @media (min-width: $mobile-screen) {
+           min-width: 16rem;
+           max-width: 18rem;
+        }
     }
     h2 {
         color: hsl(0, 0%, 95%);
@@ -112,6 +117,7 @@ $desktop-screen: 1440px;
     img {
         color: hsl(0, 0%, 95%);
         margin-bottom: 2rem;
+        width: 6rem;
     }
     p {
         color: hsla(0, 0%, 100%, 0.75);
