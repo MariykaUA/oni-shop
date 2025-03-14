@@ -3,7 +3,7 @@
         <div class="carType" v-for="carType in carTypes" 
         :key="carType.id" 
         :style="{ backgroundColor: getColor(carType.id - 1) }">
-            <img :src="carType.imgSrc" alt="Car Type Icon" :key="carType.id"/>
+            <img :src="carType.imgSrc" alt="Car Type Icon"/>
             <h2>{{ carType.name }}</h2>
             <p>{{ carType.description }}</p>
             <button v-if="carType.buttonText"
@@ -14,6 +14,9 @@
 
 <script lang="ts">
 import { defineComponent, ref } from 'vue';
+import iconSedans from '../assets/icon-sedans.svg';
+import iconSuvs from '../assets/icon-suvs.svg';
+import iconLuxury from '../assets/icon-luxury.svg';
 
 interface CarType {
     id: number;
@@ -28,21 +31,21 @@ export default defineComponent({
         const carTypes = ref<CarType[]>([
             {
                 id: 1,
-                imgSrc: '../assets/icon-sedans.svg',
+                imgSrc: iconSedans,
                 name: 'Sedans',
                 description: 'Choose a sedan for its affordability and excellent fuel economy. Ideal for cruising in the city or on your next road trip.',
                 buttonText: 'Learn More',
             },
             {
                 id: 2,
-                imgSrc: '../assets/icon-suvs.svg',
+                imgSrc: iconSuvs,
                 name: 'SUVs',
                 description: 'Take an SUV for its spacious interior, power, and versatility. Perfect for your next family vacation and off-road adventures.',
                 buttonText: 'Learn More',
             },
             {
                 id: 3,
-                imgSrc: '../assets/icon-luxury.svg',
+                imgSrc: iconLuxury,
                 name: 'Luxury',
                 description: 'Cruise  in the best car brands without the bloated prices. Enjoy the enhanced comfort of a luxury rental and arrive in style.',
                 buttonText: 'Learn More',
@@ -117,7 +120,7 @@ $desktop-screen: 1440px;
     img {
         color: hsl(0, 0%, 95%);
         margin-bottom: 2rem;
-        width: 6rem;
+        width: 4rem;
     }
     p {
         color: hsla(0, 0%, 100%, 0.75);
