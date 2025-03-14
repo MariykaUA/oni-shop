@@ -108,6 +108,11 @@ $desktop-screen: 1440px;
            min-width: 16rem;
            max-width: 18rem;
         }
+
+        @media (max-width: $mobile-screen) {
+            min-width: 12rem;
+            max-width: 16rem;
+        }
     }
     h2 {
         color: hsl(0, 0%, 95%);
