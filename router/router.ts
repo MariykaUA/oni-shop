@@ -4,9 +4,9 @@ import CarTypes from '../pages/CarTypes.vue';
 
 const routes = [
  {
-  path: '/',
-  name: 'Home',
-  component: Home,
+    path: '/',
+    name: 'Home',
+    component: Home,
   },
   {
     path: '/car-types',
