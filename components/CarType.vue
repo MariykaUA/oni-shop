@@ -86,7 +86,7 @@ $desktop-screen: 1440px;
         width: 6rem;
         
     }
-    div .carTypes {
+    .carTypes {
         @media (max-width: $mobile-screen) {
             display: flex;
             flex-direction: column;
