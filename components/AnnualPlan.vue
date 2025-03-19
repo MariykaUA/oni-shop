@@ -47,8 +47,8 @@ const AnnualPlan = ref<Plan>({
         flex-direction: row;
         justify-content: space-between;
         align-items: center;
-        margin-top: 2rem;
-        margin-bottom: 2rem;
+        margin-top: 1.5rem;
+        margin-bottom: 1.5rem;
 
 
         .plan-img-text {
@@ -87,6 +87,7 @@ const AnnualPlan = ref<Plan>({
             cursor: pointer;
 
             &:hover {
+                color: hsl(235, 43%, 41%);
                 text-decoration: underline;
             }
         }

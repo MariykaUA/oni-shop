@@ -1,22 +1,43 @@
 <script lang="ts">
+import { defineComponent, ref } from 'vue';
 import AnnualPlan from '~/components/AnnualPlan.vue';
+import Illustration from '~/assets/illustration-hero.svg';
 
-export default {
-    components: {
+
+interface OrderSummary {
+    imgSrc: string,
+    title: string,
+    description: string,
+}
+
+export default defineComponent ({
+    setup() {
+        const OrderSummary = ref<OrderSummary>({
+            imgSrc: Illustration,
+            title: 'Order Summary',
+            description: 'You can now listen to millions of songs, audiobooks, and podcasts on any device anywhere you like!',
+        });
+
+    return {
+        OrderSummary,
         AnnualPlan,
-    },
-};
+    };
+    }
+});
 </script>
 
 <template>
-    <div class="order-summary">
-        <h2>Order Summary</h2>
-        <p>You can now listen to millions of songs, audiobooks, and podcasts on any 
-            device anywhere you like!
-        </p>
-        <AnnualPlan />
-        <button> Proceed to Payment</button>
-        <button>Cancel Order</button>
+    <div class="order-page">
+        <div class="order-summary">
+            <img :src="OrderSummary.imgSrc" alt="illustration">
+            <div class="order-content">
+                <h2>{{ OrderSummary.title }}</h2>
+                <p>{{ OrderSummary.description }}</p>
+                <AnnualPlan />
+                <button class="btn-proceed"> Proceed to Payment</button>
+                <button class="btn-cancel">Cancel Order</button>
+            </div>
+        </div>
     </div>
 </template>
 
@@ -25,6 +46,14 @@ export default {
 
 $mobile-screen: 375px;
 $desktop-screen: 1440px;
+
+.order-page {
+    margin: 0;
+    padding: 4rem 0;
+    display: flex;
+    justify-content: center;
+    background-color: hsl(225, 100%, 94%)
+}
 
 .order-summary {
     display: flex;
@@ -35,12 +64,13 @@ $desktop-screen: 1440px;
     font-family: 'Red Hat Display', sans-serif;
     font-size: 16px;
     text-align: center;
-    margin-top: 3rem;
-    padding: 2rem;
+    padding-top: 0;
     background-color: rgba(255, 255, 255, 0.877);
-    width: 17rem;
+    width: 22rem;
+    overflow: hidden;
 
     h2 {
+        margin-top: 0;
         color: hsl(223, 47%, 23%);
         font-size: 24px;
         font-weight: 900;
@@ -50,6 +80,48 @@ $desktop-screen: 1440px;
         color: hsl(224, 23%, 55%);
         font-weight: 500;
         line-height: 1.5;
+        margin: 0;
+    }
+
+    img {
+        padding:0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+
+    .btn-proceed {
+        all: unset;
+        background-color: hsl(245, 75%, 52%); 
+        box-shadow: 0 15px 15px hsl(245, 75%, 52%, 0.2); 
+        color: rgba(255, 255, 255, 0.925);
+        border: none;
+        border-radius: 8px;
+        padding: 1rem 3.5rem;
+        margin-bottom: 0.5rem;
+        font-weight: 700;
+        cursor: pointer;
+
+        &:hover {
+            background-color: hsl(245, 51%, 55%)
+        }
+    }
+
+    .btn-cancel {
+        all: unset;
+        color: hsl(224, 23%, 55%);
+        border: none;
+        margin-top: 1rem;
+        font-weight: 700;
+        cursor: pointer;
+
+        &:hover {
+            color:hsl(223, 17%, 40%);
+        }
+    }
+
+    .order-content {
+        padding: 2rem;
     }
 }
 //Pale blue: hsl(225, 100%, 94%)
