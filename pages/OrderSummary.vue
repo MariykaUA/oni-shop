@@ -67,6 +67,7 @@ $desktop-screen: 1440px;
     padding-top: 0;
     background-color: rgba(255, 255, 255, 0.877);
     width: 22rem;
+    min-width: 22;
     overflow: hidden;
 
     h2 {

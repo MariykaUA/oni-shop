@@ -3,27 +3,33 @@ import { RouterLink } from 'vue-router'
 </script>
 
 <template>
-  <nav>
+  <nav class="routes">
     <router-link to="/">Home</router-link>
-    <router-link to="/car-types">Car Types</router-link>
-    <router-link to="/order-summary">Order Summary</router-link>
+    <router-link to="/car-types">Car types</router-link>
+    <router-link to="/order-summary">Order summary</router-link>
   </nav>
   <div>
     <router-view />
   </div>
 </template>
 
-<style scoped>
-nav {
-  padding: 30px;
-}
+<style lang="scss">
+.routes {
+  background-color: rgb(73, 97, 158);
+  display: flex;
+  justify-content: center;
+  gap: 3rem;
+  padding:1rem;
 
-nav a {
-  font-weight: bold;
-  color: #2c3e50;
-}
+  a {
+    text-decoration: none;
+    color: rgb(242, 242, 242);
+    font-size: 1.5rem;
+    font-weight: 500;
 
-nav a.router-link-exact-active {
-  color: #42b983;
+    &:hover {
+      color: rgb(6, 13, 93);
+    }
+  }
 }
 </style>
