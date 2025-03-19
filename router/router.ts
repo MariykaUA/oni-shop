@@ -1,6 +1,7 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import Home from '../pages/Home.vue'
 import CarTypes from '../pages/CarTypes.vue'
+import OrderSummary from '../pages/OrderSummary.vue'
 
 const routes = [
   {
@@ -13,6 +14,10 @@ const routes = [
     name: 'CarTypes',
     component: CarTypes,
   },
+  { path: 'order-summary',
+    name: 'OrderSummary',
+    component: OrderSummary,
+   },
 ]
 
 const router = createRouter({

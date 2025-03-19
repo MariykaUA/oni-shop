@@ -6,6 +6,7 @@ import { RouterLink } from 'vue-router'
   <nav>
     <router-link to="/">Home</router-link>
     <router-link to="/car-types">Car Types</router-link>
+    <router-link to="/order-summary">Order Summary</router-link>
   </nav>
   <div>
     <router-view />
