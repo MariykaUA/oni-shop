@@ -38,7 +38,7 @@ $desktop-screen: 1440px;
     margin-top: 3rem;
     padding: 2rem;
     background-color: rgba(255, 255, 255, 0.877);
-    width: 16.2rem;
+    width: 17rem;
 
     h2 {
         color: hsl(223, 47%, 23%);
