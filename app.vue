@@ -7,6 +7,7 @@
       <NuxtLink to="/">Home</NuxtLink>
       <NuxtLink to="/car-types">Car types</NuxtLink>
       <NuxtLink to="/order-summary">Order summary</NuxtLink>
+      <NuxtLink to="/price-grid">Price grid</NuxtLink>
     </nav>
   </header>
   <div>
