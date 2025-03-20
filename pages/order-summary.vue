@@ -52,7 +52,14 @@ $desktop-screen: 1440px;
     padding: 4rem 0;
     display: flex;
     justify-content: center;
-    background-color: hsl(225, 100%, 94%)
+    background-color: hsl(225, 100%, 94%);
+    background-image: url('../assets/pattern-background-desktop.svg');
+    background-repeat: no-repeat;
+    background-position: top;
+
+    @media (max-width: $mobile-screen) {
+       background-image: url('../assets/pattern-background-mobile.svg');
+    }
 }
 
 .order-summary {

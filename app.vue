@@ -22,7 +22,7 @@ $desktop-screen: 1440px;
   background-color: rgb(73, 97, 158);
   display: flex;
   justify-content: center;
-  gap: 3rem;
+  gap: 5rem;
   padding:1rem;
 
   @media (max-width: $mobile-screen) {
@@ -36,7 +36,8 @@ $desktop-screen: 1440px;
     font-weight: 500;
 
     &:hover {
-      color: rgb(6, 13, 93);
+      text-decoration: underline;
+      text-underline-offset: 5px; 
     }
 
     @media (max-width: $mobile-screen) {
