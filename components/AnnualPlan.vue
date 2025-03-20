@@ -39,6 +39,9 @@ const AnnualPlan = ref<Plan>({
  </template> 
  
 <style lang="scss" scoped>
+    $mobile-screen: 375px;
+    $desktop-screen: 1440px;
+
     .annual-plan {
         background-color:hsl(225, 100%, 98%);   
         border-radius: 12px;
@@ -64,6 +67,10 @@ const AnnualPlan = ref<Plan>({
             font-weight: 700;
             margin: 0;
             margin-bottom: 6px;
+
+            @media (max-width: $mobile-screen) {
+                font-size: 14px;
+            }
         }
 
         p {

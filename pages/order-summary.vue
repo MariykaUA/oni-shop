@@ -106,6 +106,10 @@ $desktop-screen: 1440px;
         &:hover {
             background-color: hsl(245, 51%, 55%)
         }
+        
+        @media (max-width: $mobile-screen) {
+        font-size: 0.8rem;
+      }
     }
 
     .btn-cancel {
