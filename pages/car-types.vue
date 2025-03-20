@@ -8,7 +8,7 @@ export default {
 </script>
 
 <template>
-  <div>
+  <div class="car-types">
     <CarType />
   </div>
 </template>

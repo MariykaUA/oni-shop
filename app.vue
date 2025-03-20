@@ -1,28 +1,47 @@
 <script setup>
- import { RouterLink } from 'vue-router'
 </script>
 
 <template>
-  <nav>
-    <router-link to="/">Home</router-link>
-    <router-link to="/car-types">Car Types</router-link>
-  </nav>
+  <header>
+    <nav class="routes">
+      <NuxtLink to="/">Home</NuxtLink>
+      <NuxtLink to="/car-types">Car types</NuxtLink>
+      <NuxtLink to="/order-summary">Order summary</NuxtLink>
+    </nav>
+  </header>
   <div>
-    <router-view />
+    <NuxtPage />
   </div>
 </template>
 
-<style scoped>
-nav {
-  padding: 30px;
-}
+<style lang="scss">
+$mobile-screen: 375px;
+$desktop-screen: 1440px;
 
-nav a {
-  font-weight: bold;
-  color: #2c3e50;
-}
+.routes {
+  background-color: rgb(73, 97, 158);
+  display: flex;
+  justify-content: center;
+  gap: 3rem;
+  padding:1rem;
 
-nav a.router-link-exact-active {
-  color: #42b983;
+  @media (max-width: $mobile-screen) {
+     gap: 0.8rem;
+  }
+
+  a {
+    text-decoration: none;
+    color: rgb(242, 242, 242);
+    font-size: 1.1rem;
+    font-weight: 500;
+
+    &:hover {
+      color: rgb(6, 13, 93);
+    }
+
+    @media (max-width: $mobile-screen) {
+      font-size: 1rem;
+    }
+  }
 }
 </style>
