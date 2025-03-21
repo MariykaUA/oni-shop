@@ -41,13 +41,14 @@ export default defineComponent ({
 <style lang="scss" scoped>
 @import url('https://fonts.googleapis.com/css2?family=Karla:ital,wght@0,200..800;1,200..800&family=Lexend+Deca:wght@100..900&family=Noto+Serif+Old+Uyghur&family=Red+Hat+Display:ital,wght@0,300..900;1,300..900&display=swap');
 
-
+$mobile-screen: 375px;
+$desktop-screen: 1440px;
 
 .price-grid {
    padding-top: 3rem;
    font-family: "Lexend Deca", sans-serif;
    width: 100vw;
- 
+
    h3 {
       padding-left: 2rem;
       padding-bottom: 1.6rem;
@@ -67,6 +68,7 @@ export default defineComponent ({
       margin: 0;
       padding-left: 2rem;
       padding-bottom: 3rem;
+      padding-right: 2rem;
       line-height: 180%;
       color: rgb(175, 175, 175);
    }
@@ -74,6 +76,7 @@ export default defineComponent ({
 .subscription-why-us {
     display: flex;
     width: 100%;
+
    }
 }
 </style>
