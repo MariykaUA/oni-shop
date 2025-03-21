@@ -45,6 +45,8 @@ export default defineComponent ({
 </template>
 
 <style lang="scss" scoped>
+$mobile-screen: 375px;
+$desktop-screen: 1440px;
 
     .why-us {
         flex: 1fr;
@@ -54,6 +56,11 @@ export default defineComponent ({
         color: rgb(234, 244, 253);
         background-color:hsl(179, 62%, 43%);
         font-weight: 300;
+
+        @media (max-width: $mobile-screen) {
+            width:auto;
+            
+        }
 
         h4 {
             font-size: 1.2rem;
