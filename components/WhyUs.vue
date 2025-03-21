@@ -43,3 +43,20 @@ export default defineComponent ({
         </ul>
    </div>
 </template>
+
+<style lang="scss" scoped>
+
+    .why-us {
+        padding: 3rem;
+        line-height: 180%;
+        color: rgb(234, 244, 253);
+        background-color:hsl(179, 62%, 43%);
+
+        h4 {
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin: 0;
+            margin-bottom: 1rem;
+        }
+    }
+</style>

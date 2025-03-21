@@ -28,10 +28,24 @@ export default defineComponent ({
 
 <template>
    <div class="price-grid">
-         <h3>{{ PriceGrid.title }}</h3>
-         <h4>{{ PriceGrid.subtitle }}</h4>
-         <p>{{ PriceGrid.description}}</p>
+      <h3>{{ PriceGrid.title }}</h3>
+      <h4>{{ PriceGrid.subtitle }}</h4>
+      <p>{{ PriceGrid.description}}</p>
+      <div class="subscription-why-us">
          <MonthlySubscription />
          <WhyUs />
+      </div>
    </div>
 </template>
+
+<style lang="scss" scoped>
+@import url('https://fonts.googleapis.com/css2?family=Karla:ital,wght@0,200..800;1,200..800&family=Lexend+Deca:wght@100..900&family=Noto+Serif+Old+Uyghur&family=Red+Hat+Display:ital,wght@0,300..900;1,300..900&display=swap');
+
+.price-grid {
+   font-family: "Lexend Deca", sans-serif;
+
+.subscription-why-us {
+    display: flex;
+   }
+}
+</style>
