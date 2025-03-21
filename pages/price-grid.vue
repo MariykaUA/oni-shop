@@ -47,7 +47,6 @@ $desktop-screen: 1440px;
 .price-grid {
    padding-top: 3rem;
    font-family: "Lexend Deca", sans-serif;
-   width: 100vw;
 
    h3 {
       padding-left: 2rem;
@@ -76,7 +75,12 @@ $desktop-screen: 1440px;
 .subscription-why-us {
     display: flex;
     width: 100%;
+    flex-direction: row;
 
+      @media (max-width: $mobile-screen) {
+         flex-direction: column;
+         width: 100%;
+      }
    }
 }
 </style>
