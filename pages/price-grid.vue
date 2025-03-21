@@ -41,11 +41,39 @@ export default defineComponent ({
 <style lang="scss" scoped>
 @import url('https://fonts.googleapis.com/css2?family=Karla:ital,wght@0,200..800;1,200..800&family=Lexend+Deca:wght@100..900&family=Noto+Serif+Old+Uyghur&family=Red+Hat+Display:ital,wght@0,300..900;1,300..900&display=swap');
 
+
+
 .price-grid {
+   padding-top: 3rem;
    font-family: "Lexend Deca", sans-serif;
+   width: 100vw;
+ 
+   h3 {
+      padding-left: 2rem;
+      padding-bottom: 1.6rem;
+      margin: 0;
+      color: hsl(179, 62%, 43%);
+   }
+
+   h4 {
+      margin: 0;
+      padding-bottom: 1rem;
+      padding-left: 2rem; 
+      color: hsl(71, 73%, 54%);
+   }
+
+   p {
+      padding: 0;
+      margin: 0;
+      padding-left: 2rem;
+      padding-bottom: 3rem;
+      line-height: 180%;
+      color: rgb(175, 175, 175);
+   }
 
 .subscription-why-us {
     display: flex;
+    width: 100%;
    }
 }
 </style>

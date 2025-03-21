@@ -47,14 +47,17 @@ export default defineComponent ({
 <style lang="scss" scoped>
 
     .why-us {
+        flex: 1fr;
+        width: 50%;
         padding: 3rem;
         line-height: 180%;
         color: rgb(234, 244, 253);
         background-color:hsl(179, 62%, 43%);
+        font-weight: 300;
 
         h4 {
             font-size: 1.2rem;
-            font-weight: 600;
+            font-weight: 500;
             margin: 0;
             margin-bottom: 1rem;
         }
