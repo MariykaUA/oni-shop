@@ -25,6 +25,7 @@ $desktop-screen: 1440px;
   justify-content: center;
   gap: 5rem;
   padding:1rem;
+  align-items: center;
 
   @media (max-width: $mobile-screen) {
      gap: 0.8rem;
@@ -35,10 +36,17 @@ $desktop-screen: 1440px;
     color: rgb(242, 242, 242);
     font-size: 1.1rem;
     font-weight: 500;
+    padding: 0.8rem;
 
     &:hover {
       text-decoration: underline;
       text-underline-offset: 5px; 
+    }
+
+    &:focus {
+      border: 1px solid rgb(242, 242, 242);
+      border-radius: 8px;
+      border-color: rgb(242, 242, 242);
     }
 
     @media (max-width: $mobile-screen) {
