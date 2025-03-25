@@ -18,6 +18,6 @@ export default defineNuxtConfig({
     baseURL: '/',
     buildAssetsDir: '/_nuxt/',
   },
-  css: ['./global.scss'],
+  css: ['@/assets/styles/global.scss'],
   components: true,
 });
