@@ -6,17 +6,23 @@
     "module": "ESNext",
     "moduleResolution": "Node",
     "strict": true,
-    "jsx": "preserve", 
-    "jsxImportSource": "vue",
-    "esModuleInterop": true,
+    "jsx": "preserve",
+    "declaration": false,
+    "declarationMap": false,
+    "importHelpers": true,
+    "experimentalDecorators": true,
+    "resolveJsonModule": true,
     "skipLibCheck": true,
+    "allowSyntheticDefaultImports": true,
+    "sourceMap": true,
+    "esModuleInterop": true,
     "forceConsistentCasingInFileNames": true,
     "baseUrl": ".",
     "paths": {
-        "~/*": ["./*"],
-        "@/*": ["./*"]
+      "~/*": ["./*"],
+      "@/*": ["./*"]
     },
-    "types": ["@nuxt/types", "@types/node"]
+    "types": ["nuxt"]
   },
-    "exclude": ["node_modules", ".nuxt", "dist"]
+  "exclude": ["node_modules", ".nuxt", "dist"]
 }
