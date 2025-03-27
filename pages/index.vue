@@ -5,11 +5,13 @@
         <h1>{{ offerData.title }}</h1>
         <h2>{{ offerData.price }}% Off</h2>
       </div>
+      <TeaserBanner />
     </div>
 </template>
 
 <script setup lang="ts">
-import { ref } from 'vue'
+import { ref, Ref } from 'vue'
+import TeaserBanner from '../components/TeaserBanner.vue'
 
 interface Offer {
   title: string
@@ -22,6 +24,8 @@ const offerData: Ref<Offer> = ref({
   price: 50,
   image: './banner.svg'
 })
+
+
 
 </script>
 
