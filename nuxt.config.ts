@@ -22,12 +22,12 @@ export default defineNuxtConfig({
   },
   css: ['@/assets/styles/global.scss'],
   components: true,
-  modules: ['@nuxt/image',],
+  modules: ['@nuxt/image'],
   vite: {
     resolve: {
-  alias: {
-    '@': fileURLToPath(new URL('./', import.meta.url)),
-  },
-},
+      alias: {
+        '@': fileURLToPath(new URL('./', import.meta.url)),
+      },
+    },
   },
 });

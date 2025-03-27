@@ -9,7 +9,7 @@
           <li><NuxtLink to="/contact">CONTACT</NuxtLink></li>
           <li class="nav-icons">
             <NuxtLink to="/cart">
-              <nuxt-img src="./assets/icons/cart.svg" alt="Cart icon" class="cart-icon" />
+              <nuxt-img :src="CartIcon" alt="Cart icon" class="cart-icon" />
             </NuxtLink>
           </li>
         </ul>
@@ -23,6 +23,11 @@
     </footer>
   </div>
 </template>
+
+<script setup lang="ts">
+import CartIcon from '~/assets/icons/cart.svg'
+
+</script>
 
 <style lang="scss">
 header {
