@@ -1,11 +1,18 @@
 <template>
   <div>
     <header>
-      <nav class="navigation">
-        <NuxtLink to="/"><img :src="'./logo.svg'" alt="On logo" class="logo-img"/></NuxtLink>
-        <NuxtLink to="/shoes">SHOES</NuxtLink>
-        <NuxtLink to="/accessoires">ACCESSOIRES</NuxtLink>
-        <NuxtLink to="/contact">CONTACT</NuxtLink>
+      <nav>
+        <ul class="navigation">
+          <li><NuxtLink to="/"><img :src="'./logo.svg'" alt="On logo" class="logo-img"/></NuxtLink></li>
+          <li><NuxtLink to="/shoes">SHOES</NuxtLink></li>
+          <li><NuxtLink to="/accessoires">ACCESSOIRES</NuxtLink></li>
+          <li><NuxtLink to="/contact">CONTACT</NuxtLink></li>
+          <li class="nav-icons">
+            <NuxtLink to="/cart">
+              <nuxt-img src="./assets/icons/cart.svg" alt="Cart icon" class="cart-icon" />
+            </NuxtLink>
+          </li>
+        </ul>
       </nav>
     </header>
     <main>

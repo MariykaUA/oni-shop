@@ -20,6 +20,8 @@ module.exports = {
   plugins: ['vue', '@typescript-eslint', 'prettier'], 
   "rules": {
     "semi": ["error", "always"],
+    "no-multi-spaces": ["error"],
+    "no-multiple-empty-lines": ["error", { "max": 1 }],
     "quotes": ["error", "single"],
     "no-unused-vars": "warn",
     "prettier/prettier": "error",
