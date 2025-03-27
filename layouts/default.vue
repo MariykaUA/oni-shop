@@ -23,7 +23,7 @@
       <slot />
     </main>
     <footer>
-      <p>footer</p>
+      <p>FOOTER GOES HERE</p>
     </footer>
   </div>
 </template>
@@ -76,6 +76,18 @@ header {
   width: 20.952px;
   height: 20.94px;
   flex-shrink: 0;
+}
+
+footer {
+  width: 100%;
+  height: 15rem;
+  flex-shrink: 0;
+  position: sticky;
+  background-color: #1c1d1f;
+  color: rgb(243, 243, 243);
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 </style>
