@@ -1,12 +1,12 @@
 <template>
-    <div>
-      <nuxt-img :src="offerData.image" alt="Banner image" class="banner-img"/>
-      <div class="banner-text">
-        <h1>{{ offerData.title }}</h1>
-        <h2>{{ offerData.price }}% Off</h2>
-      </div>
-      <TeaserBanner />
+  <div>
+    <nuxt-img :src="offerData.image" alt="Banner image" class="banner-img"/>
+    <div class="banner-text">
+      <h1>{{ offerData.title }}</h1>
+      <h2>{{ offerData.price }}% Off</h2>
     </div>
+    <TeaserBanner />
+  </div>
 </template>
 
 <script setup lang="ts">
