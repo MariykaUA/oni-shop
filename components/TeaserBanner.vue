@@ -1,8 +1,8 @@
 <template>
     <div class="teaser-banner">
         <div class="teaser-banner-content">
-            <h1>{{ teaserBannerData.title }}</h1>
-            <h2>{{ teaserBannerData.subtitle }}</h2>
+            <h1 class="teaser-banner-title">{{ teaserBannerData.title }}</h1>
+            <h2 class="teaser-banner-subtitle">{{ teaserBannerData.subtitle }}</h2>
             <button>{{ teaserBannerData.buttonText }}
             </button>
         </div>
@@ -11,7 +11,7 @@
 </template>
 
 <script setup lang="ts">
-import { ref, Ref } from 'vue'
+import { ref } from 'vue'
 
 interface TeaserBanner {
     title: string
@@ -20,12 +20,14 @@ interface TeaserBanner {
     buttonText: string
 }
 
-const teaserBannerData: Ref<TeaserBanner> = ref({
+const initialTeaserBannerData: TeaserBanner = {
     title: 'Adidas Men Running Sneakers',
     subtitle: 'Performance and design. Taken right to the edge.',
     buttonText: 'SHOP NOW',
     image: './transparent-shoe.svg'
-})
+};
+
+const teaserBannerData = ref(initialTeaserBannerData);
 
 </script>
 
@@ -46,18 +48,17 @@ const teaserBannerData: Ref<TeaserBanner> = ref({
 .teaser-banner-content {
     margin-left: 5rem;
     width: 50%;
+}
 
-    h1 {
-        font-size: 2.25rem;
-        margin-bottom: 0.6rem;
-    }
+.teaser-banner-title {
+    font-size: 2.25rem;
+    margin-bottom: 0.6rem;
+}
 
-    h2 {
-        font-size: 1.2rem;
-        font-weight: 300;
-        margin-bottom: 2.5rem;
-    }
-
+.teaser-banner-subtitle{
+    font-size: 1.2rem;
+    font-weight: 300;
+    margin-bottom: 2.5rem;
 }
 
 .shoe-img {

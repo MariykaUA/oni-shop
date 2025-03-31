@@ -3,7 +3,7 @@
     <header>
       <nav class="nav">
         <ul class="navigation">
-          <li><NuxtLink to="/"><img :src="'./logo.svg'" alt="On logo" class="logo-img"/></NuxtLink></li>
+          <li><NuxtLink to="/"><img :src="'/logo.svg'" alt="On logo" class="logo-img"/></NuxtLink></li>
           <li><NuxtLink to="/shoes">SHOES</NuxtLink></li>
           <li><NuxtLink to="/accessoires">ACCESSOIRES</NuxtLink></li>
           <li><NuxtLink to="/contact">CONTACT</NuxtLink></li>
@@ -20,7 +20,7 @@
       </nav>
     </header>
     <main>
-      <slot />
+      <NuxtPage />
     </main>
     <footer>
       <p>FOOTER GOES HERE</p>
