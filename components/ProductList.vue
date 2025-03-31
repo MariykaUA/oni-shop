@@ -1,11 +1,16 @@
 <template>
-    <div>
+    <div class="product-list">
       <div v-for="product in products" :key="product.id" class="product-item">
-        <img :src="product.image" :alt="product.name" />
-        <h2>{{ product.name }}</h2>
-        <p>{{ product.price }}</p>
-        <p v-if="product.inStock">In stock</p>
-        <p v-else>Out of stock</p>
+        <img :src="product.imageUrl" :alt="product.name" class="product-image"/>
+        <div class="product-info">
+          <h2 class="product-name">{{ product.name }}</h2>
+          <div class="product-price-stock">
+            <p class="product-price">{{ product.price }}$
+            </p>
+            <p v-if="product.inStock" class="in-stock">In stock</p>
+            <p v-else>Out of stock</p>
+          </div>
+        </div>
       </div>
       <p v-if="error">{{ errorMessage }}</p>
     </div>
@@ -19,9 +24,10 @@
   interface Product {
     id: string;
     name: string;
-    image: string;
+    imageUrl: string;
     price: number;
     inStock: boolean;
+    category: string;
   }
   
   const products = ref<Product[]>([]);const error = ref(false);
@@ -49,5 +55,56 @@
 
   </script>
   
-  <style lang="sass" scoped>
+  <style lang="scss" scoped>
+
+.product-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+  justify-content: center;
+  margin-top: 3rem;
+}
+
+.product-item {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  width: 300px;
+  height: 185px;
+}
+
+.product-info {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  padding-left: 2px;
+}
+
+.product-image {
+  width: 100%;
+  height: 100%;
+  background-color: rgb(159, 159, 159);
+  flex-shrink: 0;
+}
+
+.product-name {
+  font-size: 1rem;
+  font-weight: 500;
+}
+
+.product-price {
+  font-size: 1.25rem;
+  color: rgb(176, 82, 34);
+}
+
+.product-price-stock {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+}
+
+.in-stock {
+  color: rgb(40, 156, 40);
+}
+
   </style>
