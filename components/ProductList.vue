@@ -1,32 +1,52 @@
 <template>
     <div>
-      <ProductReviews />
-      <div v-for="Product in Products" :key="Product.id" class="product-item">
-        <img :src="Product.image" :alt="Product.name" />
-        <h2>{{ Product.name }}</h2>
+      <div v-for="product in products" :key="product.id" class="product-item">
+        <img :src="product.image" :alt="product.name" />
+        <h2>{{ product.name }}</h2>
+        <p>{{ product.price }}</p>
+        <p v-if="product.inStock">In stock</p>
+        <p v-else>Out of stock</p>
       </div>
+      <p v-if="error">{{ errorMessage }}</p>
     </div>
   </template>
   
-  <script>
-  import ProductReviews from './ProductReviews.vue';
+  <script lang="ts" setup>
+  import { collection, getDocs } from 'firebase/firestore'; 
+  import { db } from '~/assets/firebase';
+  import { ref, onMounted} from 'vue';
   
-  export default {
-    components: {
-      ProductReviews,
-    },
-    data() {
-      return {
-        Products: [],
-      };
-    },
-    mounted() {
-    this.fetchProduct();
-    },
-    methods: {
-      //async fetchProducts from API
-  },
-  };
+  interface Product {
+    id: string;
+    name: string;
+    image: string;
+    price: number;
+    inStock: boolean;
+  }
+  
+  const products = ref<Product[]>([]);const error = ref(false);
+  const errorMessage = ref('');
+
+  onMounted(async () => {
+    error.value = false; 
+
+    try {
+    const querySnapshot = await getDocs(collection(db, 'products'));
+    querySnapshot.forEach((doc) => {
+      products.value.push({ 
+        id: doc.id, ...doc.data() } as Product);
+    });
+    
+    }
+
+    catch (e: any) {
+      console.error('Error loading products', e);
+      
+      error.value = true;
+      errorMessage.value = e.message || 'Failed to load products';
+    }
+  });
+
   </script>
   
   <style lang="sass" scoped>
