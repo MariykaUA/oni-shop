@@ -18,7 +18,7 @@
   
   <script lang="ts" setup>
   import { collection, getDocs } from 'firebase/firestore'; 
-  import { db } from '~/assets/firebase';
+  import { db } from '../assets/firebase';
   import { ref, onMounted} from 'vue';
   
   interface Product {

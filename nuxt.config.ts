@@ -27,6 +27,7 @@ export default defineNuxtConfig({
     resolve: {
       alias: {
         '@': fileURLToPath(new URL('./', import.meta.url)),
+        '~': fileURLToPath(new URL('./node_modules', import.meta.url))
       },
     },
   },

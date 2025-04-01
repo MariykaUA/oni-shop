@@ -4,6 +4,7 @@
       <nav class="nav">
         <ul class="navigation">
           <li><NuxtLink to="/"><img :src="'/logo.svg'" alt="On logo" class="logo-img"/></NuxtLink></li>
+          <li><NuxtLink to="/plp">ALL</NuxtLink></li>
           <li><NuxtLink to="/shoes">SHOES</NuxtLink></li>
           <li><NuxtLink to="/accessoires">ACCESSOIRES</NuxtLink></li>
           <li><NuxtLink to="/contact">CONTACT</NuxtLink></li>
@@ -29,8 +30,8 @@
 </template>
 
 <script setup lang="ts">
-import CartIcon from '~/assets/icons/cart.svg'
-import SearchIcon from '~/assets/icons/search-icon.svg'
+import CartIcon from '@/assets/icons/cart.svg'
+import SearchIcon from '@/assets/icons/search-icon.svg'
 
 </script>
 
@@ -77,17 +78,4 @@ header {
   height: 20.94px;
   flex-shrink: 0;
 }
-
-footer {
-  width: 100%;
-  height: 15rem;
-  flex-shrink: 0;
-  position: sticky;
-  background-color: #1c1d1f;
-  color: rgb(243, 243, 243);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
 </style>

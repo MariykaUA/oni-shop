@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div class="banner">
         <nuxt-img :src="offerData.image" alt="Banner image" class="banner-img"/>
         <div class="banner-text">
           <h1 class="banner-text-title">{{ offerData.title }}</h1>
@@ -31,14 +31,17 @@ const offerData = ref(initialOfferData);
     width: 100%;
     height: auto;
     margin-top: 2rem;
+    display: block;
   }
 
   .banner-text {
-    color: rgb(254, 254, 254);
-    position: absolute;
-    top: 45%;
+    color: rgb(228, 228, 228);
     left: 5rem;
     pointer-events: none;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 1; 
   }
 
   .banner-text-title {
@@ -49,4 +52,8 @@ const offerData = ref(initialOfferData);
   .banner-text-price {
       font-size: 2.25rem;
     }
+
+ .banner {
+    position: relative;
+  }
 </style>
