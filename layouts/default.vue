@@ -3,6 +3,7 @@
     <header>
       <nav class="navigation">
         <NuxtLink to="/"><img :src="'./logo.svg'" alt="On logo" class="logo-img"/></NuxtLink>
+        <NuxtLink to="/plp">All</NuxtLink>
         <NuxtLink to="/shoes">SHOES</NuxtLink>
         <NuxtLink to="/accessoires">ACCESSOIRES</NuxtLink>
         <NuxtLink to="/contact">CONTACT</NuxtLink>
@@ -12,7 +13,6 @@
       <slot />
     </main>
     <footer>
-      <p>footer</p>
     </footer>
   </div>
 </template>
