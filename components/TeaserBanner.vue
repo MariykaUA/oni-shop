@@ -55,7 +55,7 @@ const teaserBannerData = ref(initialTeaserBannerData);
     margin-bottom: 0.6rem;
 }
 
-.teaser-banner-subtitle{
+.teaser-banner-subtitle {
     font-size: 1.2rem;
     font-weight: 300;
     margin-bottom: 2.5rem;
@@ -76,7 +76,8 @@ button {
 
     &:hover {
         text-decoration: underline;
-        text-decoration-thickness: 6px;      text-underline-offset: 12px;
+        text-decoration-thickness: 6px;      
+        text-underline-offset: 12px;
     }
 }
 
