@@ -1,0 +1,21 @@
+$breakpoint-small: 576px;
+$breakpoint-medium: 768px;
+$breakpoint-large: 992px;
+
+@mixin until($breakpoint) {
+  @if $breakpoint == "small" {
+    @media (max-width: ($breakpoint-small - 0.02px)) {
+      @content;
+    }
+  } @else if $breakpoint == "medium" {
+    @media (max-width: ($breakpoint-medium - 0.02px)) {
+      @content;
+    }
+  } @else if $breakpoint == "large" {
+    @media (max-width: ($breakpoint-large - 0.02px)) {
+      @content;
+    }
+  } @else {
+    @error "Invalid breakpoint: #{$breakpoint}. Use 'small', 'medium', or 'large'.";
+  }
+}
