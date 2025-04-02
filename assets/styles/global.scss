@@ -10,3 +10,37 @@
     list-style: none;
     text-decoration: none;
 }
+
+p {
+    font-size: 1.2rem;
+    font-weight: 400;
+    font-style: normal;
+    font-optical-sizing: auto;
+}
+
+button {
+    all: unset;
+    cursor: pointer;
+}
+
+body    {
+    padding-bottom: 15rem; /* Adjust based on your footer's height */
+    min-height: 100vh;
+    position: relative; /* Needed for absolute positioning of the footer */
+    box-sizing: border-box; /* Include padding in the element's total width and height */
+  }
+
+footer {
+    width: 100%;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    height: 15rem;
+    flex-shrink: 0;
+    background-color: #1c1d1f;
+    color: rgb(243, 243, 243);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-sizing: border-box;
+  }

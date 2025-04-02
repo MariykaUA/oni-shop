@@ -1,6 +1,6 @@
 <template>
     <div class="product-list">
-      <div v-for="product in products" :key="product.id" class="product-item">
+      <div v-for="product in filteredProducts" :key="product.id" class="product-item">
         <img :src="product.imageUrl" :alt="product.name" class="product-image"/>
         <div class="product-info">
           <h2 class="product-name">{{ product.name }}</h2>
@@ -18,8 +18,8 @@
   
   <script lang="ts" setup>
   import { collection, getDocs } from 'firebase/firestore'; 
-  import { db } from '~/assets/firebase';
-  import { ref, onMounted} from 'vue';
+  import { db } from '../assets/firebase';
+  import { ref, onMounted, computed, defineProps } from 'vue';
   
   interface Product {
     id: string;
@@ -30,11 +30,28 @@
     category: string;
   }
   
-  const products = ref<Product[]>([]);const error = ref(false);
+  const products = ref<Product[]>([]);
+  const error = ref(false);
   const errorMessage = ref('');
+
+
+  const props = defineProps({
+    filterCategory: {
+      type: String,
+      default: '',
+    },
+  });
+
+  const filteredProducts = computed(() => {
+    if (!props.filterCategory) {
+      return products.value;
+    }
+    return products.value.filter((product) => product.category === props.filterCategory);
+  });
 
   onMounted(async () => {
     error.value = false; 
+    products.value = [];
 
     try {
     const querySnapshot = await getDocs(collection(db, 'products'));
@@ -62,7 +79,7 @@
   flex-wrap: wrap;
   gap: 2rem;
   justify-content: center;
-  margin-top: 3rem;
+  margin: 3rem 0;
 }
 
 .product-item {
@@ -70,7 +87,6 @@
   flex-direction: column;
   gap: 1rem;
   width: 300px;
-  height: 185px;
 }
 
 .product-info {
@@ -81,8 +97,9 @@
 }
 
 .product-image {
+  display: block;
   width: 100%;
-  height: 100%;
+  height: 280px;
   background-color: rgb(159, 159, 159);
   flex-shrink: 0;
 }

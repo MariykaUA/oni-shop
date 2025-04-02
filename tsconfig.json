@@ -22,7 +22,8 @@
       "~/*": ["./*"],
       "@/*": ["./*"]
     },
-    "types": ["nuxt"]
+    "types": ["nuxt", "webpack-env"],
   },
+  "include": ["src/**/*", "*.d.ts"],
   "exclude": ["node_modules", ".nuxt", "dist"]
 }
