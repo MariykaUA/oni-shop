@@ -1,5 +1,9 @@
 <template>
-    <div>
-        <h1>hi</h1>
-    </div>
+  <div class="accessoires">
+    <ProductList :filterCategory="'accessoires'" />
+  </div>
 </template>
+
+<script lang="ts" setup>
+import ProductList from '../components/ProductList.vue'
+</script> 
