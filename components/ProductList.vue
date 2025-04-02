@@ -87,7 +87,6 @@
   flex-direction: column;
   gap: 1rem;
   width: 300px;
-  height: 185px;
 }
 
 .product-info {
@@ -98,8 +97,9 @@
 }
 
 .product-image {
+  display: block;
   width: 100%;
-  height: 100%;
+  height: 280px;
   background-color: rgb(159, 159, 159);
   flex-shrink: 0;
 }
