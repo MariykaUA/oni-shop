@@ -27,6 +27,8 @@ const offerData = ref(initialOfferData);
 </script>
 
 <style lang="scss" scoped>
+@import '../assets/styles/breakpoints.scss';
+
   .banner-img {
     width: 100%;
     height: auto;
@@ -55,5 +57,22 @@ const offerData = ref(initialOfferData);
 
  .banner {
     position: relative;
+  }
+
+  // Mobile styles
+  @include until("small") {
+    .banner-text {
+      left: 2rem;
+    }
+
+    .banner-text-title {
+      font-size: 2rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .banner-text-price {
+      font-size: 1.25rem;
+    }
+
   }
 </style>

@@ -1,6 +1,6 @@
 <template>
   <div>
-    <header>
+    <header class="header">
       <nav class="nav">
         <ul class="navigation">
           <li><NuxtLink to="/"><img :src="'/logo.svg'" alt="On logo" class="logo-img"/></NuxtLink></li>
@@ -36,7 +36,9 @@ import SearchIcon from '@/assets/icons/search-icon.svg'
 </script>
 
 <style lang="scss">
-header {
+@import '../assets/styles/breakpoints.scss';
+
+.header {
   width: 100%;
   height: 64px;
   flex-shrink: 0;
@@ -77,5 +79,34 @@ header {
   width: 20.952px;
   height: 20.94px;
   flex-shrink: 0;
+}
+
+// Mobile styles
+@include until("small") {
+  
+  .header {
+    height: 48px;
+  }
+
+  .navigation {
+    display: none;
+  }
+
+  .nav {
+    justify-content: flex-end;
+  }
+
+  .nav-icons {  
+    padding: 0;
+  }
+
+  .search-icon { 
+    display: none;
+  }
+
+  .cart-icon {
+    padding-right: 1rem;
+    margin: 0;
+  }
 }
 </style>

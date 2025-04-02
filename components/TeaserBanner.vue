@@ -32,6 +32,8 @@ const teaserBannerData = ref(initialTeaserBannerData);
 </script>
 
 <style lang="scss" scoped>
+@import '../assets/styles/breakpoints.scss';
+
 .teaser-banner {
     background-color: #1c1d1f;
     margin: 15rem 0;
@@ -78,6 +80,45 @@ button {
         text-decoration: underline;
         text-decoration-thickness: 6px;      
         text-underline-offset: 12px;
+    }
+}
+
+//Mobile styles
+@include until("small") {
+    .teaser-banner {
+        width: fit-content;
+        flex-direction: column;
+        height: auto;
+        gap: 2rem;
+        margin: 8rem 0;
+        justify-content: flex-start;
+        align-items: flex-start;
+        padding: 2rem;
+    }
+
+    .teaser-banner-content {
+        margin-left: 0;
+        width: 100%;
+    }
+
+    .teaser-banner-title {
+        font-size: 1.5rem;
+        margin-bottom: 0.5rem;
+    }
+
+    .teaser-banner-subtitle {
+        font-size: 1rem;
+        margin-bottom: 1.5rem;
+    }
+
+    .shoe-img {
+        width: 50%;
+        margin: 0;
+        left: 25%;
+    }
+
+    button {
+        font-size: 0.8rem;
     }
 }
 
