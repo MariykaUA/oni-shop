@@ -148,7 +148,8 @@ function toggleMenu() {
   }
 
   .nav {
-    justify-content: space-between;
+    width: 100%;
+    justify-content: flex-start;
     gap: 2rem;
     margin-top: 2rem;
   }
