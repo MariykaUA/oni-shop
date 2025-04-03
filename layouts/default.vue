@@ -2,18 +2,24 @@
   <div>
     <header class="header">
       <nav class="nav">
-        <button class="burger-menu-button" aria-label="Open menu">
+        <button class="burger-menu-button" aria-label="Open menu" @click="toggleMenu">
           <div class="burger-bar"></div>
           <div class="burger-bar"></div>
           <div class="burger-bar"></div>
         </button>
-        <ul class="navigation">
-          <li><NuxtLink to="/"><img :src="'/logo.svg'" alt="On logo" class="logo-img"/></NuxtLink></li>
-          <li><NuxtLink to="/plp">ALL</NuxtLink></li>
-          <li><NuxtLink to="/shoes">SHOES</NuxtLink></li>
-          <li><NuxtLink to="/accessoires">ACCESSOIRES</NuxtLink></li>
-          <li><NuxtLink to="/contact">CONTACT</NuxtLink></li>
-        </ul>
+        <div class="nav-overlay" :class="{ active: isMenuOpen }">
+          <button class="exit-menu-button" aria-label="Close menu" @click="toggleMenu">
+            <div class="exit-bar"></div>
+            <div class="exit-bar"></div>
+          </button>
+          <ul class="navigation">
+            <li><NuxtLink to="/" @click="toggleMenu"><img :src="'/logo.svg'" alt="On logo" class="logo-img"/></NuxtLink></li>
+            <li><NuxtLink to="/plp" @click="toggleMenu">ALL</NuxtLink></li>
+            <li><NuxtLink to="/shoes" @click="toggleMenu">SHOES</NuxtLink></li>
+            <li><NuxtLink to="/accessoires" @click="toggleMenu">ACCESSOIRES</NuxtLink></li>
+            <li><NuxtLink to="/contact" @click="toggleMenu">CONTACT</NuxtLink></li>
+          </ul>
+        </div>
         <button class="search-container" aria-label="Search">
             <nuxt-img :src="SearchIcon" alt="Search icon" class="search-icon-input"/>
             <input type="text" placeholder="Search Product..." class="search-input"/>
@@ -39,8 +45,15 @@
 </template>
 
 <script setup lang="ts">
+import { ref } from 'vue'
 import CartIcon from '@/assets/icons/cart.svg'
 import SearchIcon from '@/assets/icons/search-icon.svg'
+
+const isMenuOpen = ref(false)
+
+function toggleMenu() {
+  isMenuOpen.value = !isMenuOpen.value
+}
 
 </script>
 
@@ -92,6 +105,18 @@ import SearchIcon from '@/assets/icons/search-icon.svg'
   width: 64px;
   height: 64px;
   flex-shrink: 0;
+}
+
+.exit-menu-button {
+  display: none;
+  background: none;
+  border: none;
+  width: 32px;
+  height: 32px;
+  padding: 0;
+  position: absolute;
+  top: 2.5rem;
+  right: 6.5rem;
 }
 
 .cart-icon {
@@ -177,6 +202,55 @@ import SearchIcon from '@/assets/icons/search-icon.svg'
     transform: translateY(-50%);
     width: 14px;
     height: 14px;
+  }
+
+  .nav-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(21, 21, 21);
+    z-index: 10;
+    display: none; /* Hide the overlay by default */
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 2rem;
+    transition: opacity 0.3s ease-in-out, visibility 0.3s ease-in-out;
+  }
+
+  .nav-overlay.active {
+    display: flex; /* Show the overlay when active */
+  }
+
+  .nav-overlay .navigation {
+    display: flex; 
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1.5rem;
+  }
+
+  .nav-overlay .navigation a {
+    color: rgb(239, 239, 239);
+  }
+
+  .nav-overlay .exit-menu-button {
+    display: block;
+  }
+
+  .exit-bar {
+  width: 32px;
+  height: 3px;
+  background-color: #f0f0f0;
+  transition: transform 0.3s ease-in-out;
+  }
+
+  .exit-bar:nth-child(1) {
+    transform: rotate(45deg);
+  }
+
+  .exit-bar:nth-child(2) {
+    transform: rotate(-45deg);
   }
 }
 </style>
