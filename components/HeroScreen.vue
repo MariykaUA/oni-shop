@@ -1,6 +1,6 @@
 <template>
     <div class="banner">
-        <nuxt-img :src="offerData.image" alt="Banner image" class="banner-img"/>
+        <nuxt-img :src="currentImage" alt="Banner image" class="banner-img"/>
         <div class="countdown-overlay">
           <div class="countdown-display">
             <span class="hours">{{ hours }}</span> :
@@ -16,18 +16,20 @@
 </template>
 
 <script setup lang="ts">
-import { ref, onMounted, onUnmounted } from 'vue'
+import { ref, onMounted, onUnmounted, computed } from 'vue'
 
 interface Offer {
   title: string
   price: number
   image: string
+  imageMobile?: string
 }
 
 const initialOfferData: Offer = {
   title: 'Super Flash Sale',
   price: 50,
-  image: './banner.svg'
+  image: './banner.svg',
+  imageMobile: './banner-mobile.svg',
 };
 
 const offerData = ref(initialOfferData);
@@ -35,6 +37,14 @@ const offerData = ref(initialOfferData);
 const hours = ref('00');
 const minutes = ref('00');
 const seconds = ref('00');
+
+const currentImage = computed(() => {
+  if (window.innerWidth <= 576) {
+    return offerData.value.imageMobile || offerData.value.image; 
+  } else {
+    return offerData.value.image; 
+  }
+});
 
 const targetDate = new Date('2025-04-25T12:00:00'); 
 let countdownInterval;
@@ -88,10 +98,9 @@ onUnmounted(() => {
     display: block;
     }
 
-
   .countdown-overlay {
     position: absolute;
-    top: 75%;
+    top: 70%;
     transform: translateY(-50%);
     left: 1.98rem;
     color: rgba(255, 255, 255, 0.841);
@@ -137,7 +146,7 @@ onUnmounted(() => {
   @include until("small") {
     .banner-text {
       left: 2rem;
-      top: 30%;
+      top: 35%;
     }
 
     .countdown-overlay {

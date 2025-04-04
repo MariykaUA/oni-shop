@@ -63,6 +63,7 @@ function toggleMenu() {
 .header {
   width: 100%;
   flex-shrink: 0;
+  height: 60px;
 }
 
 .nav {
@@ -71,10 +72,10 @@ function toggleMenu() {
   align-items: center;
   border-bottom: #d6d6d6 1px solid;
   box-shadow: 0 2px 4px rgba(108, 108, 108, 0.1);
+  height: 60px;
 }
 
 .navigation {
-  height: 60px;
   display: inline-flex;
   align-items: center;
   gap: 2rem;
@@ -120,9 +121,9 @@ function toggleMenu() {
 }
 
 .cart-icon {
-  width: 75px;
-  height: 51px;
-  margin-right: 1rem;
+  width: 32px;
+  height: 32px;
+  margin-right: 2rem;
   flex-shrink: 0;
 }
 
@@ -138,10 +139,6 @@ function toggleMenu() {
 
 // Mobile styles
 @include until("small") {
-  
-  .header {
-    height: 48px;
-  }
 
   .navigation {
     display: none;
@@ -151,7 +148,11 @@ function toggleMenu() {
     width: 100%;
     justify-content: flex-start;
     gap: 2rem;
-    margin-top: 2rem;
+    padding-top: 2rem;
+    padding-bottom: 1rem;
+    position: fixed;
+    z-index: 2;
+    background-color: #f5f5f5;
   }
 
   .burger-menu-button {
@@ -212,8 +213,10 @@ function toggleMenu() {
     width: 100%;
     height: 100%;
     background-color: rgba(21, 21, 21);
-    z-index: 10;
-    display: none; /* Hide the overlay by default */
+    z-index: 100;
+    display: none; /* Hide the overlay by default */  
+    opacity: 0;
+    visibility: hidden;
     flex-direction: column;
     align-items: flex-start;
     padding: 2rem;
@@ -222,6 +225,8 @@ function toggleMenu() {
 
   .nav-overlay.active {
     display: flex; /* Show the overlay when active */
+    opacity: 1;
+    visibility: visible;
   }
 
   .nav-overlay .navigation {

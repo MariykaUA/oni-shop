@@ -1,8 +1,8 @@
 <template>
     <div class="teaser-banner">
         <div class="teaser-banner-content">
-            <h1 class="teaser-banner-title">{{ teaserBannerData.title }}</h1>
-            <h2 class="teaser-banner-subtitle">{{ teaserBannerData.subtitle }}</h2>
+            <h1 class="teaser-banner-title">{{ currentTitle }}</h1>
+            <h2 class="teaser-banner-subtitle">{{ currentSubtitle }}</h2>
             <button>{{ teaserBannerData.buttonText }}
             </button>
         </div>
@@ -11,23 +11,42 @@
 </template>
 
 <script setup lang="ts">
-import { ref } from 'vue'
+import { ref, computed } from 'vue'
 
 interface TeaserBanner {
     title: string
     subtitle: string
     image: string
     buttonText: string
+    imageMobile?: string
+    titleMobile?: string
+    subtitleMobile?: string
 }
+
 
 const initialTeaserBannerData: TeaserBanner = {
     title: 'Adidas Men Running Sneakers',
     subtitle: 'Performance and design. Taken right to the edge.',
     buttonText: 'SHOP NOW',
-    image: './transparent-shoe.svg'
+    image: './transparent-shoe.svg',
+    titleMobile: 'Recommended Product',
+    subtitleMobile: 'We recommend the best for you.',
 };
 
 const teaserBannerData = ref(initialTeaserBannerData);
+
+const currentTitle = computed(() => {
+  return window.innerWidth <= 576 && teaserBannerData.value.titleMobile
+    ? teaserBannerData.value.titleMobile
+    : teaserBannerData.value.title;
+});
+
+const currentSubtitle = computed(() => {
+  return window.innerWidth <= 576 && teaserBannerData.value.subtitleMobile
+    ? teaserBannerData.value.subtitleMobile
+    : teaserBannerData.value.subtitle;
+});
+
 
 </script>
 
@@ -86,7 +105,11 @@ button {
 //Mobile styles
 @include until("small") {
     .teaser-banner {
-        width: fit-content;
+        width: auto;
+        background-image: url('./teaser.svg');
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
         flex-direction: column;
         height: auto;
         gap: 2rem;
@@ -103,18 +126,18 @@ button {
 
     .teaser-banner-title {
         font-size: 1.5rem;
-        margin-bottom: 0.5rem;
+        width: 40%;
+        line-height: 160%;
+        margin-bottom: 1.5rem;
     }
 
     .teaser-banner-subtitle {
         font-size: 1rem;
-        margin-bottom: 1.5rem;
+        margin-bottom: 2.5rem;
     }
 
     .shoe-img {
-        width: 50%;
-        margin: 0;
-        left: 25%;
+        display: none;
     }
 
     button {
