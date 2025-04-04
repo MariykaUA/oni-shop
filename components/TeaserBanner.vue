@@ -117,6 +117,7 @@ button {
         justify-content: flex-start;
         align-items: flex-start;
         padding: 2rem;
+        border-radius: 8px; 
     }
 
     .teaser-banner-content {

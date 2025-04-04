@@ -112,7 +112,7 @@ onUnmounted(() => {
   .hours,
   .minutes,
   .seconds {
-    font-weight: bold;
+    font-weight: 500;
     background-color: rgba(255, 255, 255, 0.71);
     padding: 0.6rem; 
     color: rgb(28, 28, 28);
