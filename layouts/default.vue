@@ -291,16 +291,15 @@
     }
 
     .mobile-nav {
-      width: 100%;
-      display: inline-flex;
-      align-items: center;
+      display: flex;
       justify-content: space-between;
+      align-items: center;
+      width: 100vw;
     }
 
     .mobile-bottom-nav {
-      width: 100%;
       display: flex;
-      padding: 2rem 1.5rem;
+      width: fit-content;
       background-color: #f5f5f5;
       border-top: 1px solid #d6d6d6;
       position: fixed;
@@ -311,6 +310,7 @@
 
     .bottom-nav-item {
       display: flex;
+      padding: 1rem 2.5rem;
       flex-direction: column;
       align-items: center;
       text-align: center;
