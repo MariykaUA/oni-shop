@@ -1,7 +1,7 @@
 <template>
   <div>
     <header class="header">
-      <nav class="nav">
+      <nav class="nav" aria-label="Main navigation">
         <button class="burger-menu-button" aria-label="Open menu" @click="toggleMenu">
           <div class="burger-bar"></div>
           <div class="burger-bar"></div>
@@ -62,7 +62,7 @@
         </li>
       </ul>
     </nav>
-    <footer>
+    <footer class="footer">
       <p>FOOTER GOES HERE</p>
     </footer>
   </div>
@@ -89,7 +89,7 @@
   .header {
     width: 100%;
     flex-shrink: 0;
-    height: 60px;
+    height: 61px;
   }
 
   .nav {
@@ -113,7 +113,7 @@
     border: none;
     padding: 0;
   }
-
+  
   .burger-bar {
     width: 32px;
     height: 2px;
@@ -171,6 +171,10 @@
   @include until('small') {
     .navigation {
       display: none;
+    }
+
+    .header {
+      height: 109px;
     }
 
     .nav {

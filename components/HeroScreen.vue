@@ -11,6 +11,9 @@
         <div class="banner-text">
           <h1 class="banner-text-title">{{ offerData.title }}</h1>
           <h2 class="banner-text-price">{{ offerData.price }}% Off</h2>
+          <div class="button-wrapper">
+          <NuxtLink to="/plp" class="hot-btn" >{{ offerData.buttonText }}</NuxtLink>
+          </div>
         </div>
     </div>
 </template>
@@ -23,6 +26,7 @@ interface Offer {
   price: number
   image: string
   imageMobile?: string
+  buttonText: string
 }
 
 const initialOfferData: Offer = {
@@ -30,6 +34,7 @@ const initialOfferData: Offer = {
   price: 50,
   image: './banner.svg',
   imageMobile: './banner-mobile.svg',
+  buttonText: 'See more',
 };
 
 const offerData = ref(initialOfferData);
@@ -94,8 +99,11 @@ onUnmounted(() => {
   .banner-img {
     width: 100%;
     height: auto;
-    margin-top: 2rem;
     display: block;
+    border-radius: none;
+    margin-bottom: 15rem;
+    z-index: 0; 
+    pointer-events: none;
     }
 
   .countdown-overlay {
@@ -122,11 +130,15 @@ onUnmounted(() => {
   .banner-text {
     color: rgb(228, 228, 228);
     left: 5rem;
-    pointer-events: none;
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
-    z-index: 1; 
+    z-index: 2; 
+    pointer-events: auto; 
+  }
+
+  .button-wrapper {
+    margin-top: 3rem;
   }
 
   .banner-text-title {
@@ -141,6 +153,21 @@ onUnmounted(() => {
  .banner {
     position: relative;
   }
+ 
+  .hot-btn {
+    color: #f4f4f4;
+    background-color: #3c1717;
+    border-radius: 8px;
+    padding: 0.8rem 2rem;
+    font-size: 1.5rem;
+    z-index: 3; // Ensure button is on top
+    cursor: pointer; // ensure the cursor is a pointer.
+    pointer-events: auto; // make it interact with the mouse.
+
+    &:hover {
+      background-color: #131313;
+    }
+  }
 
   // Mobile styles
   @include until("small") {
@@ -149,8 +176,14 @@ onUnmounted(() => {
       top: 35%;
     }
 
+    .banner-img {
+      border-radius: 8px;
+      margin-bottom: 5rem;
+    }
+
     .countdown-overlay {
       display: flex;
+      margin-top: 0.5rem;
     }
 
     .banner-text-title {
@@ -160,6 +193,10 @@ onUnmounted(() => {
 
     .banner-text-price {
       font-size: 1.25rem;
+    }
+
+    .hot-btn {
+      display: none;
     }
 
   }

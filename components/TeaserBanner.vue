@@ -55,7 +55,6 @@ const currentSubtitle = computed(() => {
 
 .teaser-banner {
     background-color: #1c1d1f;
-    margin: 15rem 0;
     color: rgb(242, 242, 242);
     width: 100%;
     height: 25rem;
@@ -63,7 +62,7 @@ const currentSubtitle = computed(() => {
     justify-content: space-between;
     gap: 5rem;
     align-items: center;
-
+    margin: 0;
 }
 
 .teaser-banner-content {
@@ -113,11 +112,11 @@ button {
         flex-direction: column;
         height: auto;
         gap: 2rem;
-        margin: 8rem 0;
         justify-content: flex-start;
         align-items: flex-start;
         padding: 2rem;
         border-radius: 8px; 
+
     }
 
     .teaser-banner-content {
@@ -127,7 +126,7 @@ button {
 
     .teaser-banner-title {
         font-size: 1.5rem;
-        width: 40%;
+        width: 100%;
         line-height: 160%;
         margin-bottom: 1.5rem;
     }
