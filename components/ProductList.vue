@@ -72,7 +72,7 @@
 
   </script>
   
-  <style lang="scss" scoped>
+<style lang="scss" scoped>
 
 .product-list {
   display: flex;
