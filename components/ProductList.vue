@@ -1,13 +1,18 @@
 <template>
     <div class="product-list">
-      <div v-for="product in filteredProducts" :key="product.id" class="product-item">
-        <img :src="product.imageUrl" :alt="product.name" class="product-image"/>
+      <div v-for="product in filteredProducts" 
+      :key="product.id" class="product-item">
+        <img 
+        :src="product.imageUrl" 
+        :alt="product.name" 
+        class="product-image"/>
         <div class="product-info">
           <h2 class="product-name">{{ product.name }}</h2>
           <div class="product-price-stock">
             <p class="product-price">{{ product.price }}$
             </p>
-            <p v-if="product.inStock" class="in-stock">In stock</p>
+            <p v-if="product.inStock" 
+            class="in-stock">In stock</p>
             <p v-else>Out of stock</p>
           </div>
         </div>

@@ -3,21 +3,23 @@
         <div class="teaser-banner-content">
             <h1 class="teaser-banner-title">{{ currentTitle }}</h1>
             <h2 class="teaser-banner-subtitle">{{ currentSubtitle }}</h2>
-            <button>{{ teaserBannerData.buttonText }}
-            </button>
+            <ShopNowButton />
         </div>
-        <img :src="teaserBannerData.image" class="shoe-img" alt="Shoe" />
+        <img 
+        :src="teaserBannerData.image" 
+        class="shoe-img" 
+        alt="Shoe" />
     </div>
 </template>
 
 <script setup lang="ts">
 import { ref, computed } from 'vue'
+import ShopNowButton from './buttons/ShopNowButton.vue'
 
 interface TeaserBanner {
     title: string
     subtitle: string
     image: string
-    buttonText: string
     imageMobile?: string
     titleMobile?: string
     subtitleMobile?: string
@@ -27,7 +29,6 @@ interface TeaserBanner {
 const initialTeaserBannerData: TeaserBanner = {
     title: 'Adidas Men Running Sneakers',
     subtitle: 'Performance and design. Taken right to the edge.',
-    buttonText: 'SHOP NOW',
     image: './transparent-shoe.svg',
     titleMobile: 'Recommended Product',
     subtitleMobile: 'We recommend the best for you.',
@@ -89,18 +90,6 @@ const currentSubtitle = computed(() => {
     transform: translateY(-15%);
 }
 
-button {
-    color: #f4f4f4;
-    background-color: none;
-    font-size: 1rem;
-
-    &:hover {
-        text-decoration: underline;
-        text-decoration-thickness: 6px;      
-        text-underline-offset: 12px;
-    }
-}
-
 //Mobile styles
 @include until("small") {
     .teaser-banner {
@@ -140,7 +129,7 @@ button {
         display: none;
     }
 
-    button {
+    .shop-now {
         font-size: 0.8rem;
     }
 }

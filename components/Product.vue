@@ -1,7 +1,9 @@
 <template>
     <div v-if="product">
         <h1>{{ product.name }}</h1>
-        <img :src="product.img" :alt="product.name" />
+        <img 
+        :src="product.img" 
+        :alt="product.name" />
     </div>
     <div v-else>
         <h1>Product Not Found</h1>
@@ -24,12 +26,6 @@
         return {
             product: null as Product | null,
         };
-    },
-    mounted() {
-        //this.fetchProduct
-    },
-    methods: {
-        //async fetchProduct() from API
-    },
+    }
 });
 </script>
