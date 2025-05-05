@@ -1,8 +1,19 @@
 <template>
-    <button class="search-container" aria-label="Search">
-        <nuxt-img :src="SearchIcon" alt="Search icon" class="search-icon-input" />
-        <input type="text" placeholder="Search Product..." class="search-input" />
-      </button>
+    <div 
+      class="search-container" 
+      aria-label="Search">
+      
+      <nuxt-img 
+        :src="SearchIcon" 
+        alt="Search icon" 
+        class="search-icon-input"/>
+
+      <input 
+      type="text" 
+      placeholder="Search Product..." 
+      class="search-input" />
+
+    </div>
 </template>
 
 <script setup lang="ts">
