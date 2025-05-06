@@ -15,7 +15,7 @@
               <h2 class="search-headline">What are you looking for?</h2>
               <input type="text" placeholder="Search Product..." />
               <nuxt-img :src="ExitIcon" alt="Exit icon" @click="toggleSearch" class="exit-icon" />
-              <SearchButton />
+              <SearchButton @click="toggleSearch"/>
             </div>    
           </div>
 

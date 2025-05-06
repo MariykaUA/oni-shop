@@ -8,18 +8,19 @@
 
 <script setup lang="ts">
 import { ref } from 'vue'
- interface searchButton {
+
+ interface SearchButton {
   buttonText: string
   buttonLink: string
 }
 
-const initialSearchButton = {
+const SearchButton = {
   buttonText: 'Search',
-  buttonLink: '',
+  buttonLink: '/plp',
 };
 
-const buttonText = ref(initialSearchButton.buttonText);
-const buttonLink = ref(initialSearchButton.buttonLink);
+const buttonText = ref(SearchButton.buttonText);
+const buttonLink = ref(SearchButton.buttonLink);
 </script>
 
 <style lang="scss" scoped>
