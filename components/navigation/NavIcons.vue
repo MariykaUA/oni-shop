@@ -10,7 +10,7 @@
           @click="toggleSearch"/>
 
           <div v-if="isSearchOpen">
-            <div class="search-overlay" @toggle="toggleSearch"></div>
+            <div class="search-overlay" @click="toggleSearch"></div>
             <div class="search-modal">
               <h2 class="search-headline">What are you looking for?</h2>
               <input type="text" placeholder="Search Product..." />
