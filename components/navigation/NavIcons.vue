@@ -18,8 +18,6 @@
               <SearchButton @click="toggleSearch"/>
             </div>    
           </div>
-
-          <Search />
         </li>
       </ul>
 </template>
@@ -27,7 +25,6 @@
 <script setup lang="ts">
 import CartIcon from '../../assets/icons/cart.svg';
 import SearchIcon from '../../assets/icons/search-icon.svg';
-import Search from '../Search.vue';
 import { ref } from 'vue';
 import ExitIcon from '../../assets/icons/exit.svg';
 import SearchButton from '../buttons/SearchButton.vue';
