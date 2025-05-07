@@ -13,7 +13,7 @@
             <div class="search-overlay" @click="toggleSearch"></div>
             <div class="search-modal">
               <h2 class="search-headline">What are you looking for?</h2>
-              <input type="text" placeholder="Search Product..." />
+              <Search />
               <nuxt-img :src="ExitIcon" alt="Exit icon" @click="toggleSearch" class="exit-icon" />
               <SearchButton @click="toggleSearch"/>
             </div>    
@@ -100,21 +100,6 @@ function toggleSearch() {
   border-radius: 4px;
   box-shadow: 0 4px 8px rgba(4, 10, 39, 0.25);
   z-index: 3;
-}
-
-.search-modal input {
-  width: 60%;
-  padding: 1rem 2rem;
-  border-radius: 4px;
-  border: 4px solid #464646;
-  font-size: 16px;
-  font-weight: 400;
-  box-sizing: border-box;
-
-  &:focus {
-    outline: 1px solid rgb(234, 234, 234);
-    border: 4px solid #181343;
-}
 }
 
 @include until('small') {

@@ -8,7 +8,7 @@
         alt="Search icon" 
         class="search-icon-input"/>
 
-      <input 
+      <input
       type="text" 
       placeholder="Search Product..." 
       class="search-input" />
@@ -23,8 +23,19 @@ import SearchIcon from '../assets/icons/search-icon.svg';
 <style lang="scss" scoped>
 @import '@/assets/styles/breakpoints.scss';
 
-.search-container {
-    display: none;
+.search-input {
+    width: 20rem;
+    padding: 1rem 2rem;
+    border-radius: 4px;
+    border: 4px solid #464646;
+    font-size: 16px;
+    font-weight: 400;
+    box-sizing: border-box;
+  
+    &:focus {
+      outline: 1px solid rgb(234, 234, 234);
+      border: 4px solid #181343;
+  }
 }
 
 @include until('small') {
