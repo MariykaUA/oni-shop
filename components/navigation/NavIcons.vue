@@ -28,6 +28,7 @@ import SearchIcon from '../../assets/icons/search-icon.svg';
 import { ref } from 'vue';
 import ExitIcon from '../../assets/icons/exit.svg';
 import SearchButton from '../buttons/SearchButton.vue';
+import Search from '../Search.vue';
 
 const isSearchOpen = ref(false);
 function toggleSearch() {

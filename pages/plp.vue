@@ -1,11 +1,7 @@
 <template>
-<<<<<<< Updated upstream
   <div>
-    <TeaserBanner />
-    <ProductList />
-=======
-  <Breadcrumbs />
-  <div class="container">
+    <Breadcrumbs />
+    <div class="container">
     <div class="filter">
       <div class="types">
         <h3>Type</h3>
@@ -13,7 +9,7 @@
           <li>All</li>
           <li>Shoes</li>
           <li>Apparel</li>
-          <li @click="filterByCategory" >Accessoires</li>
+          <li>Accessoires</li>
         </ul>
       </div>
       <div class="price">
@@ -24,20 +20,13 @@
       <TeaserBanner />
       <ProductList />
     </div>
->>>>>>> Stashed changes
+  </div>
   </div>
 </template>
 
 <script lang="ts" setup>
 import ProductList from '../components/ProductList.vue'
 import TeaserBanner from '../components/TeaserBanner.vue'
-<<<<<<< Updated upstream
-
-export default defineComponent({
-  components: {
-    ProductList,
-    TeaserBanner
-=======
 import Breadcrumbs from '../components/Breadcrumbs.vue'
 import { ref } from 'vue'
 
@@ -48,7 +37,6 @@ interface Product {
     price: number;
     inStock: boolean;
     category: string;
->>>>>>> Stashed changes
   }
   
     const products = ref<Product[]>([]);
