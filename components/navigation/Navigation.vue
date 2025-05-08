@@ -1,10 +1,12 @@
 <template>
     <nav class="nav" aria-label="Main navigation">
+
         <button class="burger-menu-button" 
         aria-label="Open menu" 
         @click="toggleMenu">
           <nuxt-img :src="MenuIcon" alt="Menu icon" />
         </button>
+
         <div class="nav-overlay" 
         :class="{ active: isMenuOpen }">
           <button class="exit-menu-button" 
@@ -14,8 +16,10 @@
           </button>
           <NavList @click="toggleMenu" />
         </div>
+
         <Search class="mobile-nav-search"/>
         <NavIcons />
+        
       </nav>
 </template>
 

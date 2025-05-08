@@ -11,13 +11,31 @@
       <input
       type="text" 
       placeholder="Search Product..." 
-      class="search-input" />
+      class="search-input" 
+      :value="userInput"
+      @input="handleInputChange"
+      @keydown.enter="handleEnter"/>
 
     </div>
 </template>
 
 <script setup lang="ts">
 import SearchIcon from '../assets/icons/search-icon.svg';
+import { ref } from 'vue';
+
+const userInput = ref('');
+const emit = defineEmits(['search']);
+
+const handleInputChange = (event) => {
+    userInput.value = event.target.value;
+};
+
+const handleEnter = () => {
+  if (userInput.value) {
+    emit('search', userInput.value);
+  }
+};
+
 </script>
 
 <style lang="scss" scoped>

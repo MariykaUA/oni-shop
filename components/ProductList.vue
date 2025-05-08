@@ -18,6 +18,10 @@
         </div>
       </div>
       <p v-if="error">{{ errorMessage }}</p>
+
+      <p v-else-if="filteredProducts.length === 0 && userSearch">{{
+      `No products found, try again."${userSearch}"`}}</p>
+      <p v-else-if="products.length === 0 && !error">Loading products...</p>
     </div>
   </template>
   
@@ -38,6 +42,7 @@
   const products = ref<Product[]>([]);
   const error = ref(false);
   const errorMessage = ref('');
+  const userSearch = ref('');
 
 
   const props = defineProps({
