@@ -2,11 +2,11 @@
     <ul class="nav-icons">
         <li>
           <NuxtLink to="/cart">
-            <nuxt-img :src="CartIcon" alt="Cart icon" class="cart-icon" />
+            <CartIcon class="cart-icon" />
           </NuxtLink>
         </li>
         <li>
-          <nuxt-img :src="SearchIcon" alt="Search icon" class="search-icon" 
+          <SearchIcon alt="Search icon" class="search-icon" 
           @click="toggleSearch"/>
 
           <div v-if="isSearchOpen">
@@ -14,7 +14,7 @@
             <div class="search-modal">
               <h2 class="search-headline">What are you looking for?</h2>
               <Search />
-              <nuxt-img :src="ExitIcon" alt="Exit icon" @click="toggleSearch" class="exit-icon" />
+              <ExitIcon alt="Exit icon" @click="toggleSearch" class="exit-icon" />
               <SearchButton @click="toggleSearch"/>
             </div>    
           </div>
@@ -23,10 +23,10 @@
 </template>
 
 <script setup lang="ts">
-import CartIcon from '../../assets/icons/cart.svg';
-import SearchIcon from '../../assets/icons/search-icon.svg';
+import CartIcon from '~/components/icons/CartIcon.vue'
+import SearchIcon from '~/components/icons/SearchIcon.vue';
 import { ref } from 'vue';
-import ExitIcon from '../../assets/icons/exit.svg';
+import ExitIcon from '~/components/icons/ExitIcon.vue';
 import SearchButton from '../buttons/SearchButton.vue';
 import Search from '../Search.vue';
 

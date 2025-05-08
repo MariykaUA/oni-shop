@@ -3,8 +3,7 @@
       class="search-container" 
       aria-label="Search">
       
-      <nuxt-img 
-        :src="SearchIcon" 
+      <SearchIcon
         alt="Search icon" 
         class="search-icon-input"/>
 
@@ -20,7 +19,7 @@
 </template>
 
 <script setup lang="ts">
-import SearchIcon from '../assets/icons/search-icon.svg';
+import SearchIcon from '~/components/icons/SearchIcon.vue';
 import { ref } from 'vue';
 
 const userInput = ref('');

@@ -23,12 +23,5 @@ export default defineNuxtConfig({
   css: ['@/assets/styles/global.scss'],
   components: true,
   modules: ['@nuxt/image'],
-  vite: {
-    resolve: {
-      alias: {
-        '@': fileURLToPath(new URL('./', import.meta.url)),
-        '~': fileURLToPath(new URL('./node_modules', import.meta.url))
-      },
-    },
-  },
-});
+
+  });

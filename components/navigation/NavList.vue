@@ -2,7 +2,7 @@
     <ul class="navigation">
         <li>
             <NuxtLink to="/">
-                <img :src="'/logo.svg'" alt="On logo" class="logo-img" />
+                <nuxt-img :src="'/logo.svg'" alt="On logo" class="logo-img" />
             </NuxtLink>
         </li>
         <li><NuxtLink to="/plp">ALL</NuxtLink></li>

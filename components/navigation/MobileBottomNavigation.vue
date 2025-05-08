@@ -3,18 +3,18 @@
       <ul class="mobile-nav">
         <li class="bottom-nav-items">
           <NuxtLink to="/" class="bottom-nav-item">
-            <img :src="HomeIconBottom" alt="Home icon" class="nav-icon-bottom" />
+            <HomeIcon alt="Home icon" class="nav-icon-bottom" />
             <span class="nav-text-bottom">Home</span>
           </NuxtLink>
         </li>
         <li>
           <button class="search-icon-bottom" aria-label="Search">
-            <nuxt-img :src="SearchIconBottom" alt="Search icon" class="search-icon-bottom" />
+            <SearchIcon alt="Search icon" class="search-icon-bottom" />
           </button>
         </li>
         <li class="bottom-nav-items">
           <NuxtLink to="/cart" class="bottom-nav-item">
-            <img :src="CartIconBottom" alt="Cart icon" class="nav-icon-bottom" />
+            <CartIcon alt="Cart icon" class="nav-icon-bottom" />
             <span class="nav-text-bottom">Cart</span>
           </NuxtLink>
         </li>
@@ -23,9 +23,9 @@
 </template>
 
 <script setup lang="ts">
-import HomeIconBottom from '../../assets/icons/home.svg';
-import CartIconBottom from '../../assets/icons/cart.svg';
-import SearchIconBottom from '../../assets/icons/search-icon.svg';
+import HomeIcon from '~/components/icons/HomeIcon.vue';
+import CartIcon from '~/components/icons/CartIcon.vue';
+import SearchIcon from '~/components/icons/SearchIcon.vue';
 </script>
 
 <style lang="scss" scoped>
