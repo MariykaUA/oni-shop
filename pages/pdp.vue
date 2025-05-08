@@ -4,13 +4,6 @@
     </div>
 </template>
 
-<script lang="ts">
-import { defineComponent } from 'vue'
+<script lang="ts" setup>
 import Product from '../components/Product.vue'
-
-export default defineComponent({
-    components: {
-        Product
-    }
-})
 </script>

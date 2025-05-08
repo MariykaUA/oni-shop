@@ -12,10 +12,6 @@
     text-decoration: none;
 }
 
-main {
-    padding-top: 5rem;
-}
-
 p {
     font-size: 1.2rem;
     font-weight: 400;
@@ -23,17 +19,17 @@ p {
     font-optical-sizing: auto;
 }
 
-button {
+button, link {
     all: unset;
     cursor: pointer;
 }
 
-body    {
+body {
     min-height: 100vh;
     padding-bottom: 402px; /* Space for the footer */
     position: relative; /* Needed for absolute positioning of the footer */
     box-sizing: border-box; /* Include padding in the element's total width and height */
-  }
+}
 
 footer {
     width: 100%;
@@ -48,9 +44,9 @@ footer {
     justify-content: center;
     align-items: center;
     box-sizing: border-box;
-  }
+}
 
-  @include until("small") {
+@include until("small") {
     main {
         margin: 0 1rem;
         padding-top: 3rem;
@@ -60,11 +56,11 @@ footer {
         margin-bottom: 82px;
     }
 
-  }
+}
 
-    @include until ("extra-small") {
+@include until ("extra-small") {
     * {
         display: none;
     }                                
 
-    }
+}
