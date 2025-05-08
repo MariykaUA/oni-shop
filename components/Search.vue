@@ -23,10 +23,13 @@ import SearchIcon from '~/components/icons/SearchIcon.vue';
 import { ref } from 'vue';
 
 const userInput = ref('');
-const emit = defineEmits(['search']);
 
-const handleInputChange = (event) => {
-    userInput.value = event.target.value;
+type Emit = (e: 'search', value: string) => void
+const emit = defineEmits<Emit>()
+
+const handleInputChange = (event: Event) => {
+  const target = event.target as HTMLInputElement
+    userInput.value = target.value;
 };
 
 const handleEnter = () => {

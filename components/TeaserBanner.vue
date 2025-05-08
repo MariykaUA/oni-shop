@@ -13,7 +13,7 @@
 </template>
 
 <script setup lang="ts">
-import { ref, computed } from 'vue'
+import { ref, computed, onMounted } from 'vue'
 import ShopNowButton from './buttons/ShopNowButton.vue'
 
 interface TeaserBanner {
@@ -35,20 +35,23 @@ const initialTeaserBannerData: TeaserBanner = {
 };
 
 const teaserBannerData = ref(initialTeaserBannerData);
+const screenWidth = ref(0)
+
+onMounted(() => {
+    screenWidth.value = window.innerWidth;
+});
 
 const currentTitle = computed(() => {
-  return window.innerWidth <= 576 && teaserBannerData.value.titleMobile
+  return screenWidth.value <= 576 && teaserBannerData.value.titleMobile
     ? teaserBannerData.value.titleMobile
     : teaserBannerData.value.title;
 });
 
 const currentSubtitle = computed(() => {
-  return window.innerWidth <= 576 && teaserBannerData.value.subtitleMobile
+  return screenWidth.value <= 576 && teaserBannerData.value.subtitleMobile
     ? teaserBannerData.value.subtitleMobile
     : teaserBannerData.value.subtitle;
 });
-
-
 </script>
 
 <style lang="scss" scoped>

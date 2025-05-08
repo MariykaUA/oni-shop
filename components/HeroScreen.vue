@@ -16,7 +16,7 @@
 </template>
 
 <script setup lang="ts">
-import { ref, computed } from 'vue'
+import { ref, computed, onMounted } from 'vue'
 import Countdown from './Countdown.vue'
 import CtaButton from './buttons/CtaButton.vue'
 
@@ -35,9 +35,15 @@ const initialOfferData: Offer = {
 };
 
 const offerData = ref(initialOfferData);
+const screenWidth = ref(0)
+
+onMounted(() => {
+    screenWidth.value = window.innerWidth;
+});
+
 
 const currentImage = computed(() => {
-  if (window.innerWidth <= 576) {
+  if (screenWidth.value <= 576) {
     return offerData.value.imageMobile || offerData.value.image; 
   } else {
     return offerData.value.image; 
