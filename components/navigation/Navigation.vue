@@ -14,7 +14,7 @@
           </button>
           <NavList @click="toggleMenu" />
         </div>
-        <Search />
+        <Search class="mobile-nav-search"/>
         <NavIcons />
       </nav>
 </template>
@@ -36,6 +36,11 @@ function toggleMenu() {
 
 <style lang="scss" scoped>
 @import '@/assets/styles/breakpoints.scss';
+
+.mobile-nav-search {
+  display: none;
+}
+
 .nav {
     display: flex;
     justify-content: space-between;
@@ -65,6 +70,10 @@ function toggleMenu() {
 }
 
 @include until('small') {
+.mobile-nav-search {
+  display: block;
+}
+
 .navigation {
     display: none;
 }
