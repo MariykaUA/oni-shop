@@ -16,7 +16,6 @@
 </script>
 
 <style lang="scss" scoped>
-@import '@/assets/styles/breakpoints.scss';
 
 .navigation {
     display: inline-flex;

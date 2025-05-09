@@ -39,7 +39,6 @@ function toggleMenu() {
 </script>
 
 <style lang="scss" scoped>
-@import '@/assets/styles/breakpoints.scss';
 
 .mobile-nav-search {
   display: none;

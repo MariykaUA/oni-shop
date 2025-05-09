@@ -16,7 +16,6 @@
 </template>
 
 <style lang="scss" scoped>
-@import '@/assets/styles/breakpoints.scss';
 
 .types {
   display: flex;

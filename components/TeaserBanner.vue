@@ -55,7 +55,6 @@ const currentSubtitle = computed(() => {
 </script>
 
 <style lang="scss" scoped>
-@import '../assets/styles/breakpoints.scss';
 
 .teaser-banner {
     background-color: #1c1d1f;

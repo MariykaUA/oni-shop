@@ -37,7 +37,6 @@ function toggleSearch() {
 </script>
 
 <style lang="scss" scoped>
-@import '@/assets/styles/breakpoints.scss';
 
 .nav-icons {
     display: inline-flex;

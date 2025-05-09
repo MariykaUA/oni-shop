@@ -25,7 +25,6 @@
 </script>
 
 <style lang="scss" scoped>
-@import '../assets/styles/breakpoints.scss';
 
 .header {
   width: 100%;

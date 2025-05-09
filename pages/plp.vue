@@ -22,7 +22,6 @@ import FilterProducts from '../components/FilterProducts.vue';
 </script>
 
 <style lang="scss" scoped>
-@import '@/assets/styles/breakpoints.scss';
 
 .container {
   display: grid;

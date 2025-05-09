@@ -52,7 +52,6 @@ const currentImage = computed(() => {
 </script>
 
 <style lang="scss" scoped>
-@import '../assets/styles/breakpoints.scss';
 
   .banner-img {
     width: 100%;
@@ -100,6 +99,7 @@ const currentImage = computed(() => {
 
  .banner {
     position: relative;
+    margin-top: 5rem;
   }
 
   // Mobile styles
@@ -107,6 +107,10 @@ const currentImage = computed(() => {
     .banner-text {
       left: 2rem;
       top: 35%;
+    }
+
+    .banner {
+      margin-top: 0;
     }
 
     .banner-img {

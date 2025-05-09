@@ -29,7 +29,6 @@ import SearchIcon from '~/components/icons/SearchIcon.vue';
 </script>
 
 <style lang="scss" scoped>
-@import '@/assets/styles/breakpoints.scss';
 
 .mobile-bottom-nav {
     display: none;

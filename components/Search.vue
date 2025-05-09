@@ -41,8 +41,6 @@ const handleEnter = () => {
 </script>
 
 <style lang="scss" scoped>
-@import '@/assets/styles/breakpoints.scss';
-
 .search-input {
     width: 20rem;
     padding: 1rem 2rem;
@@ -69,6 +67,7 @@ const handleEnter = () => {
   
 .search-input {
     flex-grow: 1;
+    width: 100%;
     padding: 0.6rem 2rem;
     border-radius: 4px;
     border: 1px solid #252525;

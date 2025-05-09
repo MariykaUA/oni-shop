@@ -10,7 +10,6 @@
 </script>
 
 <style scoped lang="scss">
-@import '../assets/styles/breakpoints.scss';
 
 .breadcrumbs {
     display: flex;
