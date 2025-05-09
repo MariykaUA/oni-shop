@@ -3,7 +3,7 @@
       <div v-for="product in filteredProducts" 
       :key="product.id" class="product-item">
         <img 
-        :src="product.imageUrl" 
+        :src="product.colors?.[0]?.image || product.image"
         :alt="product.name" 
         class="product-image"/>
         <div class="product-info">
@@ -23,21 +23,22 @@
       `No products found, try again."${userSearch}"`}}</p>
       <p v-else-if="products.length === 0 && !error">Loading products...</p>
     </div>
-  </template>
-  
-  <script lang="ts" setup>
-  import { collection, getDocs } from 'firebase/firestore'; 
-  import { db } from '../assets/firebase';
-  import { ref, onMounted, computed, defineProps } from 'vue';
-  
-  interface Product {
-    id: string;
-    name: string;
-    imageUrl: string;
-    price: number;
-    inStock: boolean;
-    category: string;
-  }
+</template>
+
+<script lang="ts" setup>
+import { collection, getDocs } from 'firebase/firestore'; 
+import { db } from '../assets/firebase';
+import { ref, onMounted, computed, defineProps } from 'vue';
+
+interface Product {
+  id: string;
+  name: string;
+  image: string 
+  colors: { image: string, gallery: string, name: string, inStock: string }[];
+  price: number;
+  inStock: boolean;
+  category: string;
+}
   
   const products = ref<Product[]>([]);
   const error = ref(false);
@@ -79,22 +80,22 @@
       errorMessage.value = e.message || 'Failed to load products';
     }
   });
-
-  </script>
+</script>
   
 <style lang="scss" scoped>
-
 .product-list {
   display: flex;
+  width: 100%;
+  justify-content: center;
   flex-wrap: wrap;
   gap: 2rem;
-  justify-content: center;
   margin: 3rem 0;
 }
 
 .product-item {
   display: flex;
   flex-direction: column;
+  align-items: flex-start;
   gap: 1rem;
   width: 300px;
 }
@@ -112,6 +113,7 @@
   height: 280px;
   background-color: rgb(159, 159, 159);
   flex-shrink: 0;
+  object-fit: cover;
 }
 
 .product-name {
