@@ -89,14 +89,14 @@ const currentImage = computed(() => {
   .banner-text-title {
       font-size: 6rem;
       margin-bottom: 1rem;
-      font-weight: 300;
+      font-weight: $weight-light;
       color: $accent-color;
     }
 
   .banner-text-price {
       font-family: $font-secondary;
       font-size: 4rem;
-      font-weight: 400;
+      font-weight: $weight-regular;
       color: $accent-color;
       letter-spacing: 2px;
     }
@@ -130,6 +130,7 @@ const currentImage = computed(() => {
 
     .countdown-overlay {
       display: flex;
+      margin-top: 0.25rem;
     }
 
     .banner-text-title {

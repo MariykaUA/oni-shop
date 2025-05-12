@@ -2,7 +2,7 @@
     <NuxtLink 
           :to="buttonLink" 
           class="shop-now" >
-        {{ buttonText }}
+        {{ buttonText }} &#8594
     </NuxtLink>     
 </template>
 
@@ -28,6 +28,7 @@ const buttonLink = ref(initialShopButton.buttonLink);
     background-color: none;
     font-size: 1rem;
     position: relative;
+    letter-spacing: 1.5px;
 
     &::after {
       content: '';

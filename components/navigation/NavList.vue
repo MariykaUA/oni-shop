@@ -1,14 +1,17 @@
 <template>
     <ul class="navigation">
         <li>
-            <NuxtLink to="/">
-                <nuxt-img :src="'/logo.svg'" alt="On logo" class="logo-img" />
+            <NuxtLink class="navlink" to="/">
+                <nuxt-img 
+                :src="'/logo.svg'" 
+                alt="On logo" 
+                class="logo-img" />
             </NuxtLink>
         </li>
-        <li><NuxtLink to="/plp">ALL</NuxtLink></li>
-        <li><NuxtLink to="/shoes">SHOES</NuxtLink></li>
-        <li><NuxtLink to="/accessoires">ACCESSOIRES</NuxtLink></li>
-        <li><NuxtLink to="/contact">CONTACT</NuxtLink></li>
+        <li><NuxtLink class="navlink" to="/plp" active-class="active">ALL</NuxtLink></li>
+        <li><NuxtLink class="navlink" to="/shoes" active-class="active">SHOES</NuxtLink></li>
+        <li><NuxtLink class="navlink" to="/accessoires" active-class="active">ACCESSOIRES</NuxtLink></li>
+        <li><NuxtLink class="navlink" to="/contact" active-class="active">CONTACT</NuxtLink></li>
       </ul>
 </template>
 
@@ -18,6 +21,22 @@
     display: inline-flex;
     align-items: center;
     gap: 2rem;
+}
+
+.navlink {
+    color: $primary-color;
+    font-weight: $weight-regular;
+    letter-spacing: 1px;
+    text-decoration: none;
+    transition: all 0.1s ease-in-out;
+
+    &:hover {
+        color: $secondary-color;
+    }
+
+    &.active {
+        color: $secondary-color;
+    }
 }
 
 .logo-img {
