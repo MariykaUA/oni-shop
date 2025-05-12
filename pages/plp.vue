@@ -7,10 +7,11 @@
       <FilterProducts />
       <div class="products">
         <TeaserBanner />
-        <ProductList />
+        <div class="product-list">
+          <ProductList />
+        </div>
       </div>
     </div>
-
   </div>
 </template>
 
@@ -22,11 +23,14 @@ import FilterProducts from '../components/FilterProducts.vue';
 </script>
 
 <style lang="scss" scoped>
-
 .container {
   display: grid;
   grid-template-columns: 20% 1fr;
   gap: 2rem;
   margin: 0 4rem;
+}
+
+.product-list {
+  margin-left: 1.5rem;
 }
 </style>

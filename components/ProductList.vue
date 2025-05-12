@@ -85,9 +85,10 @@ interface Product {
 <style lang="scss" scoped>
 .product-list {
   display: flex;
-  width: 100%;
-  justify-content: center;
+  flex-direction: row;
   flex-wrap: wrap;
+  width: fit-content;
+  justify-content: flex-start;
   gap: 2rem;
   margin: 3rem 0;
 }
