@@ -62,7 +62,7 @@ const currentSubtitle = computed(() => {
     height: 25rem;
     display: flex;
     justify-content: space-between;
-    gap: 5rem;
+    gap: 4rem;
     align-items: center;
     margin: 0;
 }
@@ -88,7 +88,7 @@ const currentSubtitle = computed(() => {
 .shoe-img {
     width: 40%;
     height: auto;
-    margin-right: 5rem;
+    margin-right: 3rem;
     position: relative;
     transform: translateY(-15%);
 }
