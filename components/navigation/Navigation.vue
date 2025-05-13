@@ -64,12 +64,13 @@ function toggleMenu() {
     display: none;
     background: none;
     border: none;
-    width: 32px;
-    height: 32px;
+    width: 34px;
+    height: 34px;
     padding: 0;
     position: absolute;
     top: 2.5rem;
     right: 6.5rem;
+    color: $white;
 }
 
 @include until('small') {
@@ -89,7 +90,7 @@ function toggleMenu() {
     padding-bottom: 1rem;
     position: fixed;
     z-index: 2;
-    background-color: #f5f5f5;
+    background-color: $white;
 }
   
 .burger-menu-button {

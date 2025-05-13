@@ -78,11 +78,11 @@ const handleEnter = () => {
     font-weight: $weight-regular;
     transition: border-color 0.3s ease-in-out;
     box-sizing: border-box;
-  
+
     &:focus {
-        outline: none;
-        box-shadow: 0 0 0 2px rgba(12, 28, 59, 0.2);
-    }
+      outline: 1px solid $accent-color;
+      border: 2px solid $secondary-color;
+  }
 }
   
 .search-icon-input {
