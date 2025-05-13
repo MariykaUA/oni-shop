@@ -1,7 +1,7 @@
 <template>
   <div>
     <HeroScreen />
-    <TeaserBanner class="teaser-banner" />
+    <TeaserBanner />
   </div>
 </template>
 

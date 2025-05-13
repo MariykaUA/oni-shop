@@ -6,8 +6,8 @@
     <div class="container">
       <FilterProducts />
       <div class="products">
-        <TeaserBanner />
-        <div class="product-list">
+        <TeaserBanner class="banner"/>
+        <div class="product-list-wrapper">
           <ProductList />
         </div>
       </div>
@@ -30,7 +30,11 @@ import FilterProducts from '../components/FilterProducts.vue';
   margin: 0 4rem;
 }
 
-.product-list {
-  margin-left: 1.5rem;
+.product-list-wrapper {
+  margin-left: 1.6rem;
+}
+
+.banner {
+  width: fit-content;
 }
 </style>
