@@ -2,7 +2,7 @@
     <NuxtLink 
           :to="buttonLink" 
           class="shop-now" >
-        {{ buttonText }}
+        {{ buttonText }} &#8594
     </NuxtLink>     
 </template>
 
@@ -24,14 +24,27 @@ const buttonLink = ref(initialShopButton.buttonLink);
 
 <style lang="scss" scoped>
 .shop-now {
-    color: #f4f4f4;
+    color: $white;
     background-color: none;
     font-size: 1rem;
+    position: relative;
+    letter-spacing: 1.5px;
 
-    &:hover {
-        text-decoration: underline;
-        text-decoration-thickness: 6px;      
-        text-underline-offset: 12px;
+    &::after {
+      content: '';
+      position: absolute;
+      left: 0;
+      bottom: -12px; //offset
+      height: 6px; //text-decoration-thickness
+      width: 100%;
+      background-color: $white; 
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform 0.3s ease-in-out;
+    }
+  
+    &:hover::after {
+      transform: scaleX(1);
     }
 }
 </style>

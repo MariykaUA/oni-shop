@@ -8,7 +8,7 @@
         <div class="banner-text">
           <h1 class="banner-text-title">{{ offerData.title }}</h1>
           <h2 class="banner-text-price">{{ offerData.price }}% Off</h2>
-          <div class="button-wrapper">
+          <div class="cta">
           <CtaButton />
           </div>
         </div>
@@ -16,7 +16,7 @@
 </template>
 
 <script setup lang="ts">
-import { ref, computed } from 'vue'
+import { ref, computed, onMounted } from 'vue'
 import Countdown from './Countdown.vue'
 import CtaButton from './buttons/CtaButton.vue'
 
@@ -28,16 +28,22 @@ interface Offer {
 }
 
 const initialOfferData: Offer = {
-  title: 'Super Flash Sale',
+  title: 'Super Flash SALE',
   price: 50,
   image: './banner.svg',
   imageMobile: './banner-mobile.svg',
 };
 
 const offerData = ref(initialOfferData);
+const screenWidth = ref(0)
+
+onMounted(() => {
+    screenWidth.value = window.innerWidth;
+});
+
 
 const currentImage = computed(() => {
-  if (window.innerWidth <= 576) {
+  if (screenWidth.value <= 576) {
     return offerData.value.imageMobile || offerData.value.image; 
   } else {
     return offerData.value.image; 
@@ -46,8 +52,6 @@ const currentImage = computed(() => {
 </script>
 
 <style lang="scss" scoped>
-@import '../assets/styles/breakpoints.scss';
-
   .banner-img {
     width: 100%;
     height: auto;
@@ -56,7 +60,7 @@ const currentImage = computed(() => {
     margin-bottom: 15rem;
     z-index: 0; 
     pointer-events: none;
-    }
+  }
 
   .countdown-overlay {
     position: absolute;
@@ -70,7 +74,6 @@ const currentImage = computed(() => {
   }
   
   .banner-text {
-    color: rgb(228, 228, 228);
     left: 5rem;
     position: absolute;
     top: 50%;
@@ -79,21 +82,34 @@ const currentImage = computed(() => {
     pointer-events: auto; 
   }
 
-  .button-wrapper {
+  .cta {
     margin-top: 3rem;
   }
 
   .banner-text-title {
-      font-size: 3rem;
+      font-size: 6rem;
       margin-bottom: 1rem;
+      font-weight: $weight-light;
+      color: $accent-color;
     }
 
   .banner-text-price {
-      font-size: 2.25rem;
+      font-family: $font-secondary;
+      font-size: 4rem;
+      font-weight: $weight-regular;
+      color: $accent-color;
+      letter-spacing: 2px;
     }
 
  .banner {
     position: relative;
+    margin-top: 4.5rem;
+    filter: blur(0px);
+
+    &:hover {
+      filter: blur(0);
+      transition: all 0.3s ease-in-out;
+    }
   }
 
   // Mobile styles
@@ -103,6 +119,10 @@ const currentImage = computed(() => {
       top: 35%;
     }
 
+    .banner {
+      margin-top: 0;
+    }
+
     .banner-img {
       border-radius: 8px;
       margin-bottom: 5rem;
@@ -110,6 +130,7 @@ const currentImage = computed(() => {
 
     .countdown-overlay {
       display: flex;
+      margin-top: 0.25rem;
     }
 
     .banner-text-title {

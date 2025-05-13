@@ -13,7 +13,7 @@
 </template>
 
 <script setup lang="ts">
-import { ref, computed } from 'vue'
+import { ref, computed, onMounted } from 'vue'
 import ShopNowButton from './buttons/ShopNowButton.vue'
 
 interface TeaserBanner {
@@ -27,7 +27,7 @@ interface TeaserBanner {
 
 
 const initialTeaserBannerData: TeaserBanner = {
-    title: 'Adidas Men Running Sneakers',
+    title: 'Adidas LIGHT Sneakers',
     subtitle: 'Performance and design. Taken right to the edge.',
     image: './transparent-shoe.svg',
     titleMobile: 'Recommended Product',
@@ -35,28 +35,29 @@ const initialTeaserBannerData: TeaserBanner = {
 };
 
 const teaserBannerData = ref(initialTeaserBannerData);
+const screenWidth = ref(0)
+
+onMounted(() => {
+    screenWidth.value = window.innerWidth;
+});
 
 const currentTitle = computed(() => {
-  return window.innerWidth <= 576 && teaserBannerData.value.titleMobile
+  return screenWidth.value <= 576 && teaserBannerData.value.titleMobile
     ? teaserBannerData.value.titleMobile
     : teaserBannerData.value.title;
 });
 
 const currentSubtitle = computed(() => {
-  return window.innerWidth <= 576 && teaserBannerData.value.subtitleMobile
+  return screenWidth.value <= 576 && teaserBannerData.value.subtitleMobile
     ? teaserBannerData.value.subtitleMobile
     : teaserBannerData.value.subtitle;
 });
-
-
 </script>
 
 <style lang="scss" scoped>
-@import '../assets/styles/breakpoints.scss';
-
 .teaser-banner {
-    background-color: #1c1d1f;
-    color: rgb(242, 242, 242);
+    background-color: $primary-color;
+    color: $accent-color;
     width: 100%;
     height: 25rem;
     display: flex;
@@ -72,14 +73,16 @@ const currentSubtitle = computed(() => {
 }
 
 .teaser-banner-title {
-    font-size: 2.25rem;
-    margin-bottom: 0.6rem;
+    font-family: $font-secondary;
+    font-weight: $weight-light;
+    font-size: 4rem;
+    margin-bottom: 1rem;
 }
 
 .teaser-banner-subtitle {
-    font-size: 1.2rem;
-    font-weight: 300;
-    margin-bottom: 2.5rem;
+    font-size: 1.25rem;
+    font-weight: $weight-light;
+    margin-bottom: 3rem;
 }
 
 .shoe-img {
@@ -117,7 +120,6 @@ const currentSubtitle = computed(() => {
         font-size: 1.5rem;
         width: 100%;
         line-height: 160%;
-        margin-bottom: 1.5rem;
     }
 
     .teaser-banner-subtitle {

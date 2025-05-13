@@ -1,19 +1,17 @@
+@use "@/assets/styles/variables.scss" as *;
+@use "@/assets/styles/breakpoints.scss" as *;
 @import url('https://fonts.googleapis.com/css2?family=Karla:ital,wght@0,200..800;1,200..800&family=Lexend+Deca:wght@100..900&family=Noto+Serif+Old+Uyghur&family=PT+Sans:ital,wght@0,400;0,700;1,400;1,700&family=Red+Hat+Display:ital,wght@0,300..900;1,300..900&display=swap');
-@import './assets/styles/breakpoints.scss';
+@import url('https://fonts.googleapis.com/css2?family=Karla:ital,wght@0,200..800;1,200..800&family=Lexend+Deca:wght@100..900&family=Noto+Serif+Old+Uyghur&family=PT+Sans:ital,wght@0,400;0,700;1,400;1,700&family=Red+Hat+Display:ital,wght@0,300..900;1,300..900&family=Unna:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet');
 
 * {
     margin: 0;
     padding: 0;
-    font-family: "Lexend Deca", sans-serif;
+    font-family: $font-main, sans-serif;
     font-optical-sizing: auto;
     font-weight: 400;
     font-style: normal;
     list-style: none;
     text-decoration: none;
-}
-
-main {
-    padding-top: 5rem;
 }
 
 p {
@@ -23,17 +21,17 @@ p {
     font-optical-sizing: auto;
 }
 
-button {
+button, link {
     all: unset;
     cursor: pointer;
 }
 
-body    {
+body {
     min-height: 100vh;
     padding-bottom: 402px; /* Space for the footer */
     position: relative; /* Needed for absolute positioning of the footer */
     box-sizing: border-box; /* Include padding in the element's total width and height */
-  }
+}
 
 footer {
     width: 100%;
@@ -48,9 +46,9 @@ footer {
     justify-content: center;
     align-items: center;
     box-sizing: border-box;
-  }
+}
 
-  @include until("small") {
+@include until("small") {
     main {
         margin: 0 1rem;
         padding-top: 3rem;
@@ -60,11 +58,11 @@ footer {
         margin-bottom: 82px;
     }
 
-  }
+}
 
-    @include until ("extra-small") {
+@include until ("extra-small") {
     * {
         display: none;
     }                                
 
-    }
+}

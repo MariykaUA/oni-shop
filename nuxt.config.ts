@@ -1,5 +1,4 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
-import { fileURLToPath, URL } from 'node:url';
 import { defineNuxtConfig } from 'nuxt/config';
 
 export default defineNuxtConfig({
@@ -20,15 +19,16 @@ export default defineNuxtConfig({
     baseURL: '/',
     buildAssetsDir: '/_nuxt/',
   },
-  css: ['@/assets/styles/global.scss'],
+  css: ['~/assets/styles/global.scss'],
   components: true,
   modules: ['@nuxt/image'],
   vite: {
-    resolve: {
-      alias: {
-        '@': fileURLToPath(new URL('./', import.meta.url)),
-        '~': fileURLToPath(new URL('./node_modules', import.meta.url))
-      },
-    },
-  },
+    css: {
+      preprocessorOptions: {
+        scss: {
+          additionalData: `@use "@/assets/styles/variables" as *; @use "@/assets/styles/breakpoints" as *;`
+        }
+      }
+    }
+  }
 });

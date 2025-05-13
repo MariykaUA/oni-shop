@@ -16,8 +16,8 @@ const minutes = ref('00');
 const seconds = ref('00');
 
 
-const targetDate = new Date('2025-08-25T12:00:00'); 
-let countdownInterval;
+const targetDate = new Date('2025-08-29T12:00:00'); 
+let countdownInterval: ReturnType<typeof setInterval> | undefined;
 
 const updateCountdown = () => {
   const now = new Date().getTime();
@@ -58,9 +58,7 @@ onUnmounted(() => {
 });
 </script>
 
-
 <style lang="scss" scoped>
-@import '../assets/styles/breakpoints.scss';
   .hours,
   .minutes,
   .seconds {

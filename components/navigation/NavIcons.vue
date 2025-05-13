@@ -2,11 +2,11 @@
     <ul class="nav-icons">
         <li>
           <NuxtLink to="/cart">
-            <nuxt-img :src="CartIcon" alt="Cart icon" class="cart-icon" />
+            <CartIcon class="cart-icon" />
           </NuxtLink>
         </li>
         <li>
-          <nuxt-img :src="SearchIcon" alt="Search icon" class="search-icon" 
+          <SearchIcon alt="Search icon" class="search-icon" 
           @click="toggleSearch"/>
 
           <div v-if="isSearchOpen">
@@ -14,7 +14,7 @@
             <div class="search-modal">
               <h2 class="search-headline">What are you looking for?</h2>
               <Search />
-              <nuxt-img :src="ExitIcon" alt="Exit icon" @click="toggleSearch" class="exit-icon" />
+              <ExitIcon alt="Exit icon" @click="toggleSearch" class="exit-icon" />
               <SearchButton @click="toggleSearch"/>
             </div>    
           </div>
@@ -23,10 +23,10 @@
 </template>
 
 <script setup lang="ts">
-import CartIcon from '../../assets/icons/cart.svg';
-import SearchIcon from '../../assets/icons/search-icon.svg';
+import CartIcon from '~/components/icons/CartIcon.vue'
+import SearchIcon from '~/components/icons/SearchIcon.vue';
 import { ref } from 'vue';
-import ExitIcon from '../../assets/icons/exit.svg';
+import ExitIcon from '~/components/icons/ExitIcon.vue';
 import SearchButton from '../buttons/SearchButton.vue';
 import Search from '../Search.vue';
 
@@ -37,8 +37,6 @@ function toggleSearch() {
 </script>
 
 <style lang="scss" scoped>
-@import '@/assets/styles/breakpoints.scss';
-
 .nav-icons {
     display: inline-flex;
     align-items: center;
@@ -46,31 +44,43 @@ function toggleSearch() {
 }
 
 .cart-icon {
-    width: 32px;
-    height: 32px;
-    margin-right: 2rem;
+    width: 30px;
+    height: 30px;
+    margin-right: 1.25rem;
     flex-shrink: 0;
+    color: $primary-color;
+
+    &:hover {
+        color: $secondary-color;
+    }
 }
 
 .exit-icon {
-    width: 20px;
-    height: 20px;
+    width: 24px;
+    height: 24px;
     position: absolute;
     top: 1rem;
     right: 1rem;
     cursor: pointer;
+    color: $white;
 }
 
 .search-icon {
-    width: 20.952px;
-    height: 20.94px;
+    width: 28px;
+    height: 28px;
     flex-shrink: 0;
+    color: $primary-color;
+    cursor: pointer;
+
+    &:hover {
+      color: $secondary-color;
+  }
 }
 
 .search-headline {
-  color: #d1d1d1;
+  color: $white;
   font-size: 2rem;
-  font-weight: 600;
+  font-weight: $weight-light;
   margin-bottom: 2rem;
 }
 
@@ -92,7 +102,7 @@ function toggleSearch() {
   width: 60%;
   height: 50%;
   transform: translate(-50%, -50%);
-  background-color: rgb(8, 8, 8);
+  background-color: $primary-color;
   display: flex;
   flex-direction: column;
   justify-content: center;

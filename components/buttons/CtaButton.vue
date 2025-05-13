@@ -2,7 +2,7 @@
     <NuxtLink 
           :to="buttonLink" 
           class="cta" >
-        {{ buttonText }}
+        {{ buttonText }} &#8594
     </NuxtLink>     
 </template>
 
@@ -14,7 +14,7 @@ import { ref } from 'vue'
 }
 
 const initialCtaButton = {
-  buttonText: 'See more',
+  buttonText: 'SEE MORE',
   buttonLink: '/plp',
 };
 
@@ -24,17 +24,32 @@ const buttonLink = ref(initialCtaButton.buttonLink);
 
 <style lang="scss" scoped>
 .cta {
-    color: #f4f4f4;
-    background-color: #272626;
-    border-radius: 8px;
-    padding: 0.8rem 2rem;
+    color: $white;
     font-size: 1.5rem;
-    z-index: 3; // Ensure button is on top
-    cursor: pointer; // ensure the cursor is a pointer.
-    pointer-events: auto; // make it interact with the mouse.
-
-    &:hover {
-      background-color: #5b5959;
-    }
+    margin-left: 2px;
+    z-index: 3; 
+    cursor: pointer; 
+    pointer-events: auto; 
+    font-weight: $weight-regular;
+    text-decoration: none;
+    letter-spacing: 1.5px;
+    position: relative;
+ 
+  &::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: -12px; //offset
+    height: 6px; //text-decoration-thickness
+    width: 100%;
+    background-color: $white; 
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.3s ease-in-out;
   }
+
+  &:hover::after {
+    transform: scaleX(1);
+  }
+}
 </style>

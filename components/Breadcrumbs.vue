@@ -1,16 +1,12 @@
 <template>
     <div class="breadcrumbs">
-        <NuxtLink to="/" class="breadcrumbs-link">Home</NuxtLink>
+        <NuxtLink to="/" class="link" active-class="active">Home</NuxtLink>
         <span class="breadcrumbs-separator">/</span>
-        <NuxtLink to="/plp" class="breadcrumbs-link">Products</NuxtLink>
+        <NuxtLink to="/plp" class="link" active-class="active">Products</NuxtLink>
     </div>
 </template>
 
-<script lang="ts" setup>
-</script>
-
 <style scoped lang="scss">
-@import '../assets/styles/breakpoints.scss';
 
 .breadcrumbs {
     display: flex;
@@ -19,8 +15,8 @@
     font-size: 1.1rem;
     font-weight: 600;
     padding: 14px 0;
-    color: #2b2b2b;
-    background-color: #e2e2e262;
+    color: $primary-color;
+    background-color: $accent-color;
     margin-top: 2rem;
     margin-bottom: 6rem;
 
@@ -35,6 +31,20 @@
 
     &-separator {
         margin: 0 5px;
+    }
+}
+
+.link {
+    color: $primary-color;
+    font-weight: $weight-regular;
+    text-decoration: none;
+
+    &:hover {
+        color: $grey;
+    }
+
+    &.active {
+        color: $accent-dark-color;
     }
 }
 

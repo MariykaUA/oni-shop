@@ -4,7 +4,7 @@
         <button class="burger-menu-button" 
         aria-label="Open menu" 
         @click="toggleMenu">
-          <nuxt-img :src="MenuIcon" alt="Menu icon" />
+          <MenuIcon alt="Menu icon" />
         </button>
 
         <div class="nav-overlay" 
@@ -12,7 +12,7 @@
           <button class="exit-menu-button" 
           aria-label="Close menu" 
           @click="toggleMenu">
-            <nuxt-img :src="ExitIcon" alt="Exit icon" />
+            <ExitIcon alt="Exit icon" />
           </button>
           <NavList @click="toggleMenu" />
         </div>
@@ -27,8 +27,8 @@
 import { ref } from 'vue';
 import NavList from './NavList.vue';
 import Search from '../Search.vue';
-import MenuIcon from '../../assets/icons/menu.svg';
-import ExitIcon from '../../assets/icons/exit.svg';
+import MenuIcon from '~/components/icons/MenuIcon.vue';
+import ExitIcon from '~/components/icons/ExitIcon.vue';
 import NavIcons from './NavIcons.vue';
 
 const isMenuOpen = ref(false);
@@ -39,7 +39,6 @@ function toggleMenu() {
 </script>
 
 <style lang="scss" scoped>
-@import '@/assets/styles/breakpoints.scss';
 
 .mobile-nav-search {
   display: none;

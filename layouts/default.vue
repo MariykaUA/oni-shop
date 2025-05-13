@@ -1,15 +1,20 @@
 <template>
   <div>
+
     <header class="header">
       <Navigation />
     </header>
+
     <main>
       <NuxtPage />
     </main>
+
     <MobileBottomNavigation />
+
     <footer class="footer">
       <Footer />
     </footer>
+
   </div>
 </template>
 
@@ -20,14 +25,14 @@
 </script>
 
 <style lang="scss" scoped>
-@import '../assets/styles/breakpoints.scss';
+
 .header {
   width: 100%;
   flex-shrink: 0;
   height: 61px;
 }
 
-  // Mobile styles
+// Mobile styles
 @include until('small') {
 .header {
      height: 109px;

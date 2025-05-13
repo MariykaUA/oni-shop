@@ -16,7 +16,7 @@ $breakpoint-large: 992px;
     @media (max-width: ($breakpoint-large - 0.02px)) {
       @content;
     }
-  } @else if $breakpoint == "extra-small" { // Added condition
+  } @else if $breakpoint == "extra-small" { 
     @media (max-width: ($breakpoint-extra-small - 0.02px)) {
       @content;
     }
