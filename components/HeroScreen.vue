@@ -30,8 +30,8 @@ interface Offer {
 const initialOfferData: Offer = {
   title: 'Super Flash SALE',
   price: 50,
-  image: './banner.svg',
-  imageMobile: './banner-mobile.svg',
+  image: '/banner.svg',
+  imageMobile: '/banner-mobile.svg',
 };
 
 const offerData = ref(initialOfferData);
