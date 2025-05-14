@@ -3,7 +3,7 @@
       <ul class="mobile-nav">
         <li class="bottom-nav-items">
           <NuxtLink to="/" class="bottom-nav-item">
-            <HomeIcon alt="Home icon" class="nav-icon-bottom" />
+            <HomeIcon alt="Home icon" class="home-icon-bottom" />
             <span class="nav-text-bottom">Home</span>
           </NuxtLink>
         </li>
@@ -59,16 +59,18 @@ import SearchIcon from '~/components/icons/SearchIcon.vue';
     flex-direction: column;
     align-items: center;
     text-align: center;
+    color: $primary-color;
 }
 
 .search-icon-bottom {
-    width: 36px;
-    height: 36px;
+    width: 32px;
+    height: 32px;
+    color: $primary-color;
 }
 
 .nav-text-bottom {
     font-size: 0.8rem;
-    color: #616161;
+    color: $primary-color;
     margin-top: 0.25rem;
   }
 }
