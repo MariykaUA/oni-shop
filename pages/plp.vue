@@ -15,7 +15,8 @@
           <ProductList 
           :filter-category="selectedCategory"
           :min-price="minPrice"
-          :max-price="maxPrice"/>
+          :max-price="maxPrice"
+          :userSearch="searchQuery" />
         </div>
       </div>
     </div>
@@ -23,15 +24,28 @@
 </template>
 
 <script lang="ts" setup>
-import { ref } from 'vue'
+import { ref, onMounted } from 'vue'
+import { useSearch } from '~/composables/useSearch'
+import { useRoute } from 'vue-router'
 import ProductList from '../components/ProductList.vue'
 import TeaserBanner from '../components/TeaserBanner.vue'
 import Breadcrumbs from '../components/Breadcrumbs.vue'
 import FilterProducts from '../components/FilterProducts.vue';
 
-const selectedCategory = ref('All')
-const minPrice = ref(0)         
-const maxPrice = ref(600)  
+const selectedCategory = ref<string>('All')
+const minPrice = ref<number>(0)
+const maxPrice = ref<number>(600)
+
+const route = useRoute()
+
+const { searchQuery } = useSearch()
+
+onMounted(() => {
+  const search = route.query.search
+  if (typeof search === 'string') {
+    searchQuery.value = search
+  }
+})
 </script>
 
 <style lang="scss" scoped>

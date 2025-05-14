@@ -14,27 +14,35 @@
       :value="userInput"
       @input="handleInputChange"
       @keydown.enter="handleEnter"/>
-
     </div>
 </template>
 
 <script setup lang="ts">
 import SearchIcon from '~/components/icons/SearchIcon.vue';
 import { ref } from 'vue';
+import { useRouter } from 'vue-router'
+import { useSearch } from '~/composables/useSearch'
 
-const userInput = ref('');
+const userInput = ref<string>('')
+const router = useRouter()
 
-type Emit = (e: 'search', value: string) => void
-const emit = defineEmits<Emit>()
+const emit = defineEmits<(e: 'searchComplete') => void>()
 
-const handleInputChange = (event: Event) => {
+const { setSearch } = useSearch() 
+
+const handleInputChange = (event: Event): void => {
   const target = event.target as HTMLInputElement
-    userInput.value = target.value;
-};
+  userInput.value = target.value
+}
 
-const handleEnter = () => {
-  if (userInput.value) {
-    emit('search', userInput.value);
+const handleEnter = (): void => {
+  const query = userInput.value.trim()
+  if (query) {
+    setSearch(query)
+    router.push({
+      path: '/plp',
+      query: { search: query }
+    }).then(() => { emit('searchComplete') })
   }
 };
 </script>

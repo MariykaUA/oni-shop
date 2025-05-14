@@ -1,26 +1,31 @@
 <template>
-    <NuxtLink 
-          :to="buttonLink" 
-          class="search-button" >&#8594
+    <button
+          class="search-button" 
+          @click="handleSearch">&#8594
         {{ buttonText }}
-    </NuxtLink>     
+    </button>     
 </template>
 
 <script setup lang="ts">
 import { ref } from 'vue'
+import { useRouter } from 'vue-router'
+import { useSearch } from '~/composables/useSearch'
 
- interface SearchButton {
-  buttonText: string
-  buttonLink: string
+const { searchQuery } = useSearch()
+const router = useRouter()
+
+const emit = defineEmits<(e: 'searchComplete') => void>()
+
+const buttonText = ref('Search items')
+
+const handleSearch = () => {
+  const trimmed = searchQuery.value.trim()
+  const path = trimmed ? `/plp?search=${encodeURIComponent(trimmed)}` : '/plp'
+
+  router.push(path).then(() => {
+    emit('searchComplete') // 🔁 Tell parent to close modal
+  })
 }
-
-const SearchButton = {
-  buttonText: 'Search items',
-  buttonLink: '/plp',
-};
-
-const buttonText = ref(SearchButton.buttonText);
-const buttonLink = ref(SearchButton.buttonLink);
 </script>
 
 <style lang="scss" scoped>

@@ -1,11 +1,14 @@
 <template>
     <div class="product-list">
       <div v-for="product in filteredProducts" 
-      :key="product.id" class="product-item">
+      :key="product.id" 
+      class="product-item">
+
         <img 
         :src="product.colors?.[0]?.image || product.image"
         :alt="product.name" 
         class="product-image"/>
+
         <div class="product-info">
           <h2 class="product-name">{{ product.name }}</h2>
           <div class="product-price-stock">
@@ -14,13 +17,14 @@
             <p v-if="product.inStock" 
             class="in-stock">In stock</p>
             <p v-else>Out of stock</p>
-          </div>
+          </div>  
         </div>
       </div>
       <p v-if="error">{{ errorMessage }}</p>
 
-      <p v-else-if="filteredProducts.length === 0 && userSearch">{{
-      `No products found, try again."${userSearch}"`}}</p>
+      <p v-else-if="filteredProducts.length === 0 && searchQuery">
+        {{ "No products found for '" + searchQuery + "'." }}
+      </p>
       <p v-else-if="products.length === 0 && !error">Loading products...</p>
     </div>
 </template>
@@ -29,6 +33,9 @@
 import { collection, getDocs } from 'firebase/firestore'; 
 import { db } from '../assets/firebase';
 import { ref, onMounted, computed } from 'vue';
+import { useSearch } from '~/composables/useSearch'
+
+const { searchQuery } = useSearch()
 
 interface Product {
   id: string;
@@ -43,7 +50,6 @@ interface Product {
   const products = ref<Product[]>([]);
   const error = ref(false);
   const errorMessage = ref('');
-  const userSearch = ref('');
 
   const props = defineProps<{
   filterCategory: string,
@@ -53,8 +59,14 @@ interface Product {
   const filteredProducts = computed(() => {
   return products.value.filter((product) => {
     const matchesCategory = !props.filterCategory || product.category?.toLowerCase() === props.filterCategory.toLowerCase();
+
     const matchesPrice = product.price >= props.minPrice && product.price <= props.maxPrice;
-    return matchesCategory && matchesPrice;
+
+    const matchesSearch =
+      !searchQuery.value ||
+      product.name.toLowerCase().includes(searchQuery.value.toLowerCase())
+
+    return matchesCategory && matchesPrice && matchesSearch;
   });
 });
 
