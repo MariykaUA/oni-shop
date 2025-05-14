@@ -12,15 +12,23 @@
           </ul>
         </div>
         <div class="price">
+          <h3 class="price-title">Prices</h3>
+          <PriceRangeSlider
+          @update:minPrice="minPrice = $event"
+          @update:maxPrice="maxPrice = $event" />
         </div>
     </div>
 </template>
 
 <script lang="ts" setup>
 import { ref, onMounted } from 'vue'
+import PriceRangeSlider from './PriceRangeSlider.vue'
 
 const types = ['All', 'Shoes', 'Apparel', 'Accessoires']
 const selectedType = ref('All')
+
+const minPrice = ref(0)
+const maxPrice = ref(600)
 
 const emit = defineEmits(['update:category'])
 
@@ -58,7 +66,7 @@ onMounted(() => {
 .price {
   display: flex;
   flex-direction: column;
-  gap: 1rem;
+  gap: 1.5rem;
   padding: 1.5rem;
   color: $primary-color;
   background-color: $accent-color;   
