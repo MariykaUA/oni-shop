@@ -17,7 +17,7 @@
 </template>
 
 <script lang="ts" setup>
-import { ref, defineEmits } from 'vue'
+import { ref, onMounted } from 'vue'
 
 const types = ['All', 'Shoes', 'Apparel', 'Accessoires']
 const selectedType = ref('All')
@@ -28,6 +28,11 @@ const selectType = (type: string) => {
   selectedType.value = type
   emit('update:category', type === 'All' ? '' : type.toLowerCase())
 }
+
+// Emit default value 
+onMounted(() => {
+  emit('update:category', '')
+})
 </script>
 
 <style lang="scss" scoped>

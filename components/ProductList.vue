@@ -28,7 +28,7 @@
 <script lang="ts" setup>
 import { collection, getDocs } from 'firebase/firestore'; 
 import { db } from '../assets/firebase';
-import { ref, onMounted, computed, defineProps } from 'vue';
+import { ref, onMounted, computed } from 'vue';
 
 interface Product {
   id: string;
