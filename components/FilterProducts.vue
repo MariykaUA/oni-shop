@@ -97,4 +97,14 @@ watch(maxPrice, (val) => emit('update:maxPrice', val))
   text-decoration-thickness: 2px;
   text-underline-offset: 6px;
 }
+
+@include until('small') {
+.types {
+    display: none;
+  }
+
+.price {
+    display: none;
+  }
+}
 </style>

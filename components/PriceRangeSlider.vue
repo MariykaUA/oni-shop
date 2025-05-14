@@ -68,7 +68,7 @@ input[type='range'] {
     appearance: none;
     width: 100%;
     height: 6px;
-    background: lighten($primary-color, 40%);
+    background: $light-green;
     border-radius: 3px;
     outline: none;
     cursor: pointer;

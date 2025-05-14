@@ -13,4 +13,15 @@ import ProductList from '../components/ProductList.vue'
   width: 90%;
   margin: 0 auto;
 }
+
+@include until('small') {
+  .accessoires {
+    width: 100%;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: -2rem;
+  }
+}
 </style>

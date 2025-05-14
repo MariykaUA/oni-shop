@@ -13,4 +13,15 @@ import ProductList from '../components/ProductList.vue'
   margin: 0 auto;
   width: 90%;
 }
+
+@include until('small') {
+  .shoes {
+    width: 100%;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: -2rem;
+  }
+}
 </style>

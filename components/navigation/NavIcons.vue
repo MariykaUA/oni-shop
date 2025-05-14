@@ -13,9 +13,9 @@
             <div class="search-overlay" @click="toggleSearch"></div>
             <div class="search-modal">
               <h2 class="search-headline">What are you looking for?</h2>
-              <Search />
+              <Search @searchComplete="toggleSearch"/>
               <ExitIcon alt="Exit icon" @click="toggleSearch" class="exit-icon" />
-              <SearchButton @click="toggleSearch"/>
+              <SearchButton @searchComplete="toggleSearch"/>
             </div>    
           </div>
         </li>
