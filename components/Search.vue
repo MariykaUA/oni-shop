@@ -38,13 +38,18 @@ const handleInputChange = (event: Event): void => {
 const handleEnter = (): void => {
   const query = userInput.value.trim()
   if (query) {
-    setSearch(query)
+    
     router.push({
       path: '/plp',
       query: { search: query }
-    }).then(() => { emit('searchComplete') })
+    }).then(() => {
+      // Update the composable’s state
+      setSearch(query)
+
+      emit('searchComplete')
+    })
   }
-};
+}
 </script>
 
 <style lang="scss" scoped>

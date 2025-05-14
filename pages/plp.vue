@@ -24,7 +24,7 @@
 </template>
 
 <script lang="ts" setup>
-import { ref, onMounted } from 'vue'
+import { ref, onMounted, onBeforeUnmount } from 'vue'
 import { useSearch } from '~/composables/useSearch'
 import { useRoute } from 'vue-router'
 import ProductList from '../components/ProductList.vue'
@@ -45,6 +45,10 @@ onMounted(() => {
   if (typeof search === 'string') {
     searchQuery.value = search
   }
+})
+
+onBeforeUnmount(() => {
+  searchQuery.value = '' // Clear on leave
 })
 </script>
 
