@@ -57,7 +57,7 @@ interface Product {
     if (!props.filterCategory) {
       return products.value;
     }
-    return products.value.filter((product) => product.category === props.filterCategory);
+    return products.value.filter((product) => product.category?.toLowerCase() === props.filterCategory.toLowerCase());
   });
 
   onMounted(async () => {

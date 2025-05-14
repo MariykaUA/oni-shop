@@ -1,43 +1,84 @@
 <template>
     <div class="filter">
         <div class="types">
-          <h3>Type</h3>
-          <ul>
-            <li>All</li>
-            <li>Shoes</li>
-            <li>Apparel</li>
-            <li>Accessoires</li>
+          <h3 class="headline">filter</h3>
+          <ul class="types-list">
+            <li v-for="type in types"
+            :key="type"
+            :class="{ active: selectedType === type }"
+            @click="selectType(type)">
+          {{ type }}
+        </li>
           </ul>
         </div>
         <div class="price">
-          <h3 class="price-title">price</h3>
         </div>
     </div>
 </template>
 
-<style lang="scss" scoped>
+<script lang="ts" setup>
+import { ref, defineEmits } from 'vue'
 
+const types = ['All', 'Shoes', 'Apparel', 'Accessoires']
+const selectedType = ref('All')
+
+const emit = defineEmits(['update:category'])
+
+const selectType = (type: string) => {
+  selectedType.value = type
+  emit('update:category', type === 'All' ? '' : type.toLowerCase())
+}
+</script>
+
+<style lang="scss" scoped>
 .types {
   display: flex;
   flex-direction: column;
-  gap: 1rem;
-  padding: 1rem;
-  margin-bottom: 1rem;
-  background-color: #e2e2e262;  
+  gap: 1.5rem;
+  padding: 1.5rem;
+  background-color: $accent-color;  
+  color: $primary-color;
   border-radius: 4px;
+  margin-bottom: 2rem;
+}
+
+.headline {
+  font-family: $font-secondary;
+  font-size: 2rem;
+  font-variant: small-caps;
+  letter-spacing: 2px;
+  font-weight: $weight-regular;
 }
 
 .price {
   display: flex;
   flex-direction: column;
   gap: 1rem;
-  padding: 1rem;
-  margin-bottom: 1rem;
-  background-color: #e2e2e262;  
+  padding: 1.5rem;
+  color: $primary-color;
+  background-color: $accent-color;   
   border-radius: 4px;
 }
 
 .price-title {
   font-variant: small-caps;
+  font-family: $font-secondary;
+  font-size: 2rem;
+}
+
+.types-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  font-size: 1.2rem;
+  letter-spacing: 1px;
+}
+
+.types-list li.active {
+  text-decoration: underline;
+  text-decoration-color: $primary-color;
+  text-decoration-thickness: 2px;
+  text-underline-offset: 6px;
 }
 </style>

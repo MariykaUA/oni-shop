@@ -4,11 +4,11 @@
     <Breadcrumbs />
 
     <div class="container">
-      <FilterProducts />
+      <FilterProducts v-model:category="selectedCategory" /> 
       <div class="products">
         <TeaserBanner class="banner"/>
         <div class="product-list-wrapper">
-          <ProductList />
+          <ProductList :filter-category="selectedCategory"/>
         </div>
       </div>
     </div>
@@ -16,10 +16,13 @@
 </template>
 
 <script lang="ts" setup>
+import { ref } from 'vue'
 import ProductList from '../components/ProductList.vue'
 import TeaserBanner from '../components/TeaserBanner.vue'
 import Breadcrumbs from '../components/Breadcrumbs.vue'
 import FilterProducts from '../components/FilterProducts.vue';
+
+const selectedCategory = ref('All')
 </script>
 
 <style lang="scss" scoped>
