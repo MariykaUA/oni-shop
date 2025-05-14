@@ -21,7 +21,7 @@
 </template>
 
 <script lang="ts" setup>
-import { ref, onMounted } from 'vue'
+import { ref, onMounted, watch } from 'vue'
 import PriceRangeSlider from './PriceRangeSlider.vue'
 
 const types = ['All', 'Shoes', 'Apparel', 'Accessoires']
@@ -30,7 +30,7 @@ const selectedType = ref('All')
 const minPrice = ref(0)
 const maxPrice = ref(600)
 
-const emit = defineEmits(['update:category'])
+const emit = defineEmits(['update:category', 'update:minPrice', 'update:maxPrice'])
 
 const selectType = (type: string) => {
   selectedType.value = type
@@ -41,6 +41,9 @@ const selectType = (type: string) => {
 onMounted(() => {
   emit('update:category', '')
 })
+
+watch(minPrice, (val) => emit('update:minPrice', val))
+watch(maxPrice, (val) => emit('update:maxPrice', val))
 </script>
 
 <style lang="scss" scoped>
