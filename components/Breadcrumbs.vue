@@ -20,15 +20,6 @@
     margin-top: 2rem;
     margin-bottom: 6rem;
 
-    &-link {
-        text-decoration: none;
-        color: inherit;
-
-        &:hover {
-            color: rgb(0, 29, 157);
-        }
-    }
-
     &-separator {
         margin: 0 5px;
     }
@@ -41,10 +32,6 @@
 
     &:hover {
         color: $grey;
-    }
-
-    &.active {
-        color: $accent-dark-color;
     }
 }
 

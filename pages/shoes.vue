@@ -1,6 +1,6 @@
 <template>
   <div class="shoes">
-    <ProductList :filterCategory="'shoes'" />
+    <ProductList :filterCategory="'shoes'" :minPrice="0" :maxPrice="600" />
   </div>
 </template>
 

@@ -28,7 +28,7 @@
 <script lang="ts" setup>
 import { collection, getDocs } from 'firebase/firestore'; 
 import { db } from '../assets/firebase';
-import { ref, onMounted, computed, defineProps } from 'vue';
+import { ref, onMounted, computed } from 'vue';
 
 interface Product {
   id: string;
@@ -45,20 +45,18 @@ interface Product {
   const errorMessage = ref('');
   const userSearch = ref('');
 
-
-  const props = defineProps({
-    filterCategory: {
-      type: String,
-      default: '',
-    },
-  });
+  const props = defineProps<{
+  filterCategory: string,
+  minPrice: number,
+  maxPrice: number }>()
 
   const filteredProducts = computed(() => {
-    if (!props.filterCategory) {
-      return products.value;
-    }
-    return products.value.filter((product) => product.category === props.filterCategory);
+  return products.value.filter((product) => {
+    const matchesCategory = !props.filterCategory || product.category?.toLowerCase() === props.filterCategory.toLowerCase();
+    const matchesPrice = product.price >= props.minPrice && product.price <= props.maxPrice;
+    return matchesCategory && matchesPrice;
   });
+});
 
   onMounted(async () => {
     error.value = false; 
