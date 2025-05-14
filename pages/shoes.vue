@@ -13,4 +13,10 @@ import ProductList from '../components/ProductList.vue'
   margin: 0 auto;
   width: 90%;
 }
+
+@include until('small') {
+  .shoes {
+    width: 100%;
+  }
+}
 </style>

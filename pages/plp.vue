@@ -67,4 +67,17 @@ onBeforeUnmount(() => {
 .banner {
   width: fit-content;
 }
+
+@include until('small') {
+  .container {
+    display: flex;
+    flex-direction: column;
+    margin: 0 2rem;
+    margin-top: -2rem;
+  }
+
+  .product-list-wrapper {
+    margin-left: 0;
+  }
+}
 </style>

@@ -108,7 +108,7 @@ interface Product {
   flex-direction: column;
   align-items: flex-start;
   gap: 1rem;
-  width: 300px;
+  width: fit-content;
 }
 
 .product-info {
@@ -120,8 +120,8 @@ interface Product {
 
 .product-image {
   display: block;
-  width: 100%;
-  height: 280px;
+  width: fit-content;
+  height: 300px;
   background-color: rgb(159, 159, 159);
   flex-shrink: 0;
   object-fit: cover;
@@ -147,4 +147,20 @@ interface Product {
   color: rgb(40, 156, 40);
 }
 
-  </style>
+@include until('small') {
+  .product-list {
+    width: 300px;
+
+  }
+
+  .product-item {
+    width: 100%;
+    max-width: 300px;
+  }
+
+  .product-image {
+    height: 200px;
+    width: 100%;
+  }
+}
+</style>
