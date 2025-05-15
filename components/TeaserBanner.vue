@@ -97,7 +97,7 @@ const currentSubtitle = computed(() => {
 @include until("small") {
     .teaser-banner {
         width: auto;
-        background-image: url('./teaser.svg');
+        background-image: url('/teaser.svg');
         background-size: cover;
         background-position: center;
         background-repeat: no-repeat;
