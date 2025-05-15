@@ -29,7 +29,7 @@ interface TeaserBanner {
 const initialTeaserBannerData: TeaserBanner = {
     title: 'Adidas LIGHT Sneakers',
     subtitle: 'Performance and design. Taken right to the edge.',
-    image: './transparent-shoe.svg',
+    image: '/transparent-shoe.svg',
     titleMobile: 'Recommended Product',
     subtitleMobile: 'We recommend the best for you.',
 };

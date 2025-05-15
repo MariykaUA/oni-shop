@@ -108,7 +108,7 @@ interface Product {
   flex-direction: column;
   align-items: flex-start;
   gap: 1rem;
-  width: fit-content;
+  width: 300px;
 }
 
 .product-info {
@@ -120,7 +120,7 @@ interface Product {
 
 .product-image {
   display: block;
-  width: fit-content;
+  width: 300px;
   height: 300px;
   background-color: rgb(159, 159, 159);
   flex-shrink: 0;
