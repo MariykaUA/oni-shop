@@ -6,14 +6,17 @@
       <SearchIcon
         alt="Search icon" 
         class="search-icon-input"/>
+      <div class="search-wrapper">
+        <input
+        type="text" 
+        placeholder="Search Product..." 
+        class="search-input" 
+        :value="userInput"
+        @input="handleInputChange"
+        @keydown.enter="handleSearch"/>
 
-      <input
-      type="text" 
-      placeholder="Search Product..." 
-      class="search-input" 
-      :value="userInput"
-      @input="handleInputChange"
-      @keydown.enter="handleEnter"/>
+        <SearchButton class="search-btn" @click="handleSearch" />
+      </div>
     </div>
 </template>
 
@@ -22,6 +25,7 @@ import SearchIcon from '~/components/icons/SearchIcon.vue';
 import { ref } from 'vue';
 import { useRouter } from 'vue-router'
 import { useSearch } from '~/composables/useSearch'
+import SearchButton from './buttons/SearchButton.vue';
 
 const userInput = ref<string>('')
 const router = useRouter()
@@ -35,7 +39,7 @@ const handleInputChange = (event: Event): void => {
   userInput.value = target.value
 }
 
-const handleEnter = (): void => {
+const handleSearch = (): void => {
   const query = userInput.value.trim()
   if (query) {
     
@@ -53,6 +57,14 @@ const handleEnter = (): void => {
 </script>
 
 <style lang="scss" scoped>
+.search-wrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+} 
+
 .search-input {
     width: 20rem;
     padding: 1rem 2rem;
