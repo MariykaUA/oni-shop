@@ -118,5 +118,9 @@ const handleSearch = (): void => {
     width: 14px;
     height: 14px;
     }
+
+.search-btn {
+display: none;
+}
 }
 </style>
