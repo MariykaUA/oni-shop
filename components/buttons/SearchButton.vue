@@ -23,7 +23,7 @@ const handleSearch = () => {
   const path = trimmed ? `/plp?search=${encodeURIComponent(trimmed)}` : '/plp'
 
   router.push(path).then(() => {
-    emit('searchComplete') // 🔁 Tell parent to close modal
+    emit('searchComplete') // Tell parent to close modal
   })
 }
 </script>

@@ -2,7 +2,8 @@
     <div class="product-list">
       <div v-for="product in filteredProducts" 
       :key="product.id" 
-      class="product-item">
+      class="product-item"
+      @click="handleProductClick(product.id)">
 
         <img 
         :src="product.colors?.[0]?.image || product.image"
@@ -37,7 +38,7 @@ import { useSearch } from '~/composables/useSearch'
 
 const { searchQuery } = useSearch()
 
-interface Product {
+export interface Product {
   id: string;
   name: string;
   image: string 
@@ -54,7 +55,8 @@ interface Product {
   const props = defineProps<{
   filterCategory: string,
   minPrice: number,
-  maxPrice: number }>()
+  maxPrice: number,
+  userSearch: string }>()
 
   const filteredProducts = computed(() => {
   return products.value.filter((product) => {
@@ -90,6 +92,12 @@ interface Product {
       errorMessage.value = e.message || 'Failed to load products';
     }
   });
+
+  const emit = defineEmits<(e: 'productSelected', id: string) => void>()
+
+  const handleProductClick = (id: string) => {
+    emit('productSelected', id);
+  };
 </script>
   
 <style lang="scss" scoped>
@@ -99,7 +107,7 @@ interface Product {
   flex-wrap: wrap;
   width: fit-content;
   justify-content: flex-start;
-  gap: 2rem;
+  gap: 1.8rem;
   margin: 3rem 0;
 }
 
