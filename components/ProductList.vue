@@ -117,6 +117,7 @@ export interface Product {
   align-items: flex-start;
   gap: 1rem;
   width: 300px;
+  cursor: pointer;
 }
 
 .product-info {

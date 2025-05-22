@@ -54,8 +54,7 @@ onBeforeUnmount(() => {
 })
 
 const openProductPage = (id: string) => {
-  router.push({ name: 'ProductDetail', params: { id } });
-}
+  router.push(`/pdp/${id}`) }
 </script>
 
 <style lang="scss" scoped>
