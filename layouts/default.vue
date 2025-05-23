@@ -6,7 +6,7 @@
     </header>
 
     <main>
-      <NuxtPage />
+      <slot />
     </main>
 
     <MobileBottomNavigation />

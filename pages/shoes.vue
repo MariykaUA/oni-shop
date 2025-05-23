@@ -1,12 +1,24 @@
 <template>
   <div class="shoes">
-    <ProductList :filterCategory="'shoes'" :minPrice="0" :maxPrice="600" />
+    <ProductList 
+    :filterCategory="'shoes'" 
+    :minPrice="0" 
+    :maxPrice="600" 
+    :userSearch="''" 
+    @productSelected="openProductPage"/>
   </div>
 </template>
 
 <script lang="ts" setup>
+import { useRouter } from 'vue-router'
 import ProductList from '../components/ProductList.vue'
-</script> 
+
+const router = useRouter()
+
+const openProductPage = (id: string) => {
+  router.push(`/pdp/${id}`)
+}
+</script>
 
 <style lang="scss" scoped>
 .shoes {
