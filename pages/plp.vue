@@ -12,12 +12,12 @@
       <div class="products">
         <TeaserBanner class="banner"/>
         <div class="product-list-wrapper">
-          <ProductList 
-          :filter-category="selectedCategory"
-          :min-price="minPrice"
-          :max-price="maxPrice"
-          :userSearch="searchQuery" 
-          @productSelected="openProductPage" />
+            <ProductList 
+            :filter-category="selectedCategory"
+            :min-price="minPrice"
+            :max-price="maxPrice"
+            :userSearch="searchQuery" 
+            @productSelected="openProductPage" />
         </div>
       </div>
     </div>

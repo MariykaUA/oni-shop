@@ -1,4 +1,5 @@
 <template>
+  <div class="pdp-wrapper">
     <div v-if="product" class="product-container">
         <img 
         class="product-image"
@@ -22,6 +23,7 @@
         <h1>Product Not Found</h1>
         <p>Sorry, the product you are looking for could not be found.</p>
         <button>Back to Products</button>
+    </div>
   </div>
 </template>
 
