@@ -1,4 +1,4 @@
-# The page lives here: https://fancy-daifuku-45d224.netlify.app/
+The page lives here: https://fancy-daifuku-45d224.netlify.app/
 
 # Nuxt Minimal Starter
 
