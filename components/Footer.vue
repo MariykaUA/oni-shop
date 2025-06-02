@@ -61,10 +61,9 @@ footer {
 .content {
     display: flex;
     flex-wrap: wrap;
-    justify-content: flex-start;
-    gap: 4rem;
+    justify-content: center;
+    gap: 4.8rem;
     padding: 2rem 5rem;
-    width: 100%;
 }
 
 .copyright {
@@ -143,8 +142,7 @@ footer {
     footer {
         padding: 2rem;
         margin: 0;
-        align-items: center;
-        justify-content: center;
+        justify-content: flex-start;
     }
 
     .social-links {
@@ -155,7 +153,6 @@ footer {
     .content {
         flex-direction: column;
         gap: 0.5rem;
-        align-items: center;
         padding: 0;
     }
 
