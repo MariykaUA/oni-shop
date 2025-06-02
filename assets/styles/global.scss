@@ -28,7 +28,7 @@ button, link, li {
 
 body {
     min-height: 100vh;
-    padding-bottom: 402px; /* Space for the footer */
+    padding-bottom: 450px; /* Space for the footer */
     position: relative; /* Needed for absolute positioning of the footer */
     box-sizing: border-box; /* Include padding in the element's total width and height */
 }
@@ -38,7 +38,7 @@ footer {
     position: absolute;
     bottom: 0;
     left: 0;
-    height: 18rem;
+    height: 20rem;
     flex-shrink: 0;
     background-color: #1c1d1f;
     color: rgb(243, 243, 243);
@@ -55,7 +55,7 @@ footer {
     }
 
     footer {
-        margin-bottom: 82px;
+        margin-bottom: 78px;
     }
 
 }

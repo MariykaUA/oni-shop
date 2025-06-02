@@ -12,15 +12,21 @@
             </div>
 
             <div class="social">
-                <h4>FOLLOW US</h4>
+                <h4 class="headlines">FOLLOW US</h4>
                 <ul class="social-links">
-                    <li><Facebook /></li>
-                    <li><Instagram /></li>
+                    <li>
+                        <a class="media-link" href="https://www.facebook.com/On/" target="_blank" rel="noopener noreferrer" aria-label="Follow On on Facebook">
+                        <Facebook /></a>
+                    </li>
+                    <li>
+                        <a class="media-link" href="https://www.instagram.com/on/?hl=en" target="_blank" rel="noopener noreferrer" aria-label="Follow On on Facebook">
+                        <Instagram /></a>
+                    </li>
                 </ul>
             </div>
 
             <div class="information">
-                <h4>INFORMATION</h4>
+                <h4 class="headlines">INFORMATION</h4>
                 <ul class="info-links">
                     <li><NuxtLink class="navlink" to="/about">About Us</NuxtLink></li>
                     <li><NuxtLink class="navlink" to="/privacy">Privacy Policy</NuxtLink></li>
@@ -29,7 +35,7 @@
             </div>
 
             <div class="contact">
-                <h4>CONTACT US</h4>
+                <h4 class="headlines">CONTACT US</h4>
                 <p class="address">On AG, 8005 Zürich, Switzerland</p>
             </div>
         </div>
@@ -67,7 +73,6 @@ footer {
     padding: 0 2.5rem;
     font-size: 1rem;
     font-weight: $weight-light;
-
 }
 
 .brand, .social, .information, .contact {
@@ -82,11 +87,13 @@ footer {
 
 .social-links {
     list-style: none;
+    text-decoration: none;
+    color: $white;
     padding: 0;
     margin: 0;
     display: flex;
     flex-direction: row;
-    gap: 0.5rem;
+    gap: 1rem;
     font-size: 1rem;
     font-weight: $weight-light;
 }
@@ -107,13 +114,68 @@ footer {
     text-decoration: none;
 }
 
-.address {
+.address, .mission {
     font-weight: $weight-light;
+    width: 85%;
 }
 
 .logo-img {
     width: 48px;
     height: 48px;
     flex-shrink: 0;
+}
+
+.media-link {
+    color: $white;
+    text-decoration: none;
+    transition: color 0.2s ease-in-out;
+
+    &:hover {
+        color: $secondary-color;
+    }
+}
+
+@include until("small") {
+    footer {
+        padding: 2rem;
+        margin: 0;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .social-links {
+        flex-direction: row;
+
+    }
+
+    .content {
+        flex-direction: column;
+        gap: 0.5rem;
+        align-items: center;
+        padding: 0;
+    }
+
+    .brand, .social, .information, .contact {
+        display: inline-flex;
+        flex-direction: row;
+        width: 100%;
+    }
+
+    .headlines, .address, .mission {
+    display: none;
+    }
+
+    .brand {
+       gap: 1rem;
+       align-items: center;
+    }
+
+    .copyright {
+        font-size: 0.875rem;
+        justify-content: center;
+        width: 100%;
+        padding: 0;
+        margin-top: 1rem;
+    }
 }
 </style>
