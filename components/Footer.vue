@@ -133,6 +133,10 @@ footer {
     &:hover {
         color: $secondary-color;
     }
+
+    &:visited {
+        color: $white; 
+    }
 }
 
 @include until("small") {
