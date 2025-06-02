@@ -1,8 +1,6 @@
 <template>
     <button
-          class="search-button" 
-          @click="handleSearch">&#8594
-        {{ buttonText }}
+        class="search-button">&#8594 Search items
     </button>     
 </template>
 

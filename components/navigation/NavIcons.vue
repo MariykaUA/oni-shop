@@ -15,7 +15,6 @@
               <h2 class="search-headline">What are you looking for?</h2>
               <Search @searchComplete="toggleSearch"/>
               <ExitIcon alt="Exit icon" @click="toggleSearch" class="exit-icon" />
-              <SearchButton @searchComplete="toggleSearch"/>
             </div>    
           </div>
         </li>
@@ -27,7 +26,6 @@ import CartIcon from '~/components/icons/CartIcon.vue'
 import SearchIcon from '~/components/icons/SearchIcon.vue';
 import { ref } from 'vue';
 import ExitIcon from '~/components/icons/ExitIcon.vue';
-import SearchButton from '../buttons/SearchButton.vue';
 import Search from '../Search.vue';
 
 const isSearchOpen = ref(false);
