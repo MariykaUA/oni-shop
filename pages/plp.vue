@@ -12,11 +12,12 @@
       <div class="products">
         <TeaserBanner class="banner"/>
         <div class="product-list-wrapper">
-          <ProductList 
-          :filter-category="selectedCategory"
-          :min-price="minPrice"
-          :max-price="maxPrice"
-          :userSearch="searchQuery" />
+            <ProductList 
+            :filter-category="selectedCategory"
+            :min-price="minPrice"
+            :max-price="maxPrice"
+            :userSearch="searchQuery" 
+            @productSelected="openProductPage" />
         </div>
       </div>
     </div>
@@ -26,7 +27,7 @@
 <script lang="ts" setup>
 import { ref, onMounted, onBeforeUnmount } from 'vue'
 import { useSearch } from '~/composables/useSearch'
-import { useRoute } from 'vue-router'
+import { useRoute, useRouter } from 'vue-router'
 import ProductList from '../components/ProductList.vue'
 import TeaserBanner from '../components/TeaserBanner.vue'
 import Breadcrumbs from '../components/Breadcrumbs.vue'
@@ -37,6 +38,7 @@ const minPrice = ref<number>(0)
 const maxPrice = ref<number>(600)
 
 const route = useRoute()
+const router = useRouter()
 
 const { searchQuery } = useSearch()
 
@@ -50,6 +52,9 @@ onMounted(() => {
 onBeforeUnmount(() => {
   searchQuery.value = '' // Clear on leave
 })
+
+const openProductPage = (id: string) => {
+  router.push(`/pdp/${id}`) }
 </script>
 
 <style lang="scss" scoped>
@@ -61,7 +66,7 @@ onBeforeUnmount(() => {
 }
 
 .product-list-wrapper {
-  margin-left: 1.6rem;
+  margin-left: 1.75rem;
 }
 
 .banner {

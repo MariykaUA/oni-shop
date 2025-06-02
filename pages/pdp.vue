@@ -1,9 +1,5 @@
 <template>
     <div>
-        <Product />
+        <NuxtPage />
     </div>
 </template>
-
-<script lang="ts" setup>
-import Product from '../components/Product.vue'
-</script>

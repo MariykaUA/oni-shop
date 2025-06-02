@@ -25,5 +25,5 @@
     "types": ["nuxt", "webpack-env"]
   },
   "include": ["types", "components", "**/*.ts", "**/*.vue", "*.d.ts"],
-  "exclude": ["node_modules", ".nuxt", "dist"]
+  "exclude": ["node_modules", ".nuxt", "dist", "app.vue"],
 }

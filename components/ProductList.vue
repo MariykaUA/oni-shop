@@ -1,8 +1,9 @@
 <template>
-    <div class="product-list">
+    <div class="product-list" :key="$route.fullPath">
       <div v-for="product in filteredProducts" 
       :key="product.id" 
-      class="product-item">
+      class="product-item"
+      @click="handleProductClick(product.id)">
 
         <img 
         :src="product.colors?.[0]?.image || product.image"
@@ -20,24 +21,25 @@
           </div>  
         </div>
       </div>
-      <p v-if="error">{{ errorMessage }}</p>
 
+      <p v-if="status === 'pending'">Loading products...</p>
+      <p v-if="status === 'error'">{{ errorMessage }}</p>
       <p v-else-if="filteredProducts.length === 0 && searchQuery">
         {{ "No products found for '" + searchQuery + "'." }}
       </p>
-      <p v-else-if="products.length === 0 && !error">Loading products...</p>
     </div>
 </template>
 
 <script lang="ts" setup>
-import { collection, getDocs } from 'firebase/firestore'; 
-import { db } from '../assets/firebase';
-import { ref, onMounted, computed } from 'vue';
+import { computed } from 'vue';
+import { useRoute } from 'vue-router';
 import { useSearch } from '~/composables/useSearch'
+import { useAsyncData } from 'nuxt/app';
 
 const { searchQuery } = useSearch()
+const route = useRoute()
 
-interface Product {
+export interface Product {
   id: string;
   name: string;
   image: string 
@@ -46,18 +48,29 @@ interface Product {
   inStock: boolean;
   category: string;
 }
-  
-  const products = ref<Product[]>([]);
-  const error = ref(false);
-  const errorMessage = ref('');
 
-  const props = defineProps<{
-  filterCategory: string,
-  minPrice: number,
-  maxPrice: number }>()
+const props = defineProps<{
+filterCategory: string,
+minPrice: number,
+maxPrice: number,
+userSearch: string }>()
 
-  const filteredProducts = computed(() => {
-  return products.value.filter((product) => {
+const productsKey = computed(() => `products-${route.fullPath}`);
+
+const { data: products, status, error } = await useAsyncData(
+  productsKey.value, // Dynamic key
+  () => $fetch('/api/products'),
+  {
+    watch: [() => route.fullPath] // reload data on every navigation to this page
+  }
+);
+ 
+const errorMessage = computed(() => {
+  return error.value instanceof Error ? error.value.message : 'An unknown error occurred.';
+});
+
+const filteredProducts = computed(() => {
+  return (products.value as Product[])?.filter((product: Product) => {
     const matchesCategory = !props.filterCategory || product.category?.toLowerCase() === props.filterCategory.toLowerCase();
 
     const matchesPrice = product.price >= props.minPrice && product.price <= props.maxPrice;
@@ -67,29 +80,14 @@ interface Product {
       product.name.toLowerCase().includes(searchQuery.value.toLowerCase())
 
     return matchesCategory && matchesPrice && matchesSearch;
-  });
+  }) || [];
 });
 
-  onMounted(async () => {
-    error.value = false; 
-    products.value = [];
+  const emit = defineEmits<(e: 'productSelected', id: string) => void>()
 
-    try {
-    const querySnapshot = await getDocs(collection(db, 'products'));
-    querySnapshot.forEach((doc) => {
-      products.value.push({ 
-        id: doc.id, ...doc.data() } as Product);
-    });
-    
-    }
-
-    catch (e: any) {
-      console.error('Error loading products', e);
-      
-      error.value = true;
-      errorMessage.value = e.message || 'Failed to load products';
-    }
-  });
+  const handleProductClick = (id: string) => {
+    emit('productSelected', id);
+  };
 </script>
   
 <style lang="scss" scoped>
@@ -99,7 +97,7 @@ interface Product {
   flex-wrap: wrap;
   width: fit-content;
   justify-content: flex-start;
-  gap: 2rem;
+  gap: 1.8rem;
   margin: 3rem 0;
 }
 
@@ -109,6 +107,7 @@ interface Product {
   align-items: flex-start;
   gap: 1rem;
   width: 300px;
+  cursor: pointer;
 }
 
 .product-info {
