@@ -55,7 +55,14 @@ import Instagram from '~/components/icons/Instagram.vue';
 footer {
     display: flex;
     flex-direction: column;
-    align-items: flex-start;
+    gap: 2rem;
+    width: 100%;
+    align-items: center;
+    justify-content: flex-start;
+    flex-basis: auto;
+    flex-grow: 0;
+    flex-shrink: 0;
+    padding: 3rem 5rem 1rem 5rem;
 }
 
 .content {
@@ -63,13 +70,12 @@ footer {
     flex-wrap: wrap;
     justify-content: center;
     gap: 4.8rem;
-    padding: 2rem 5rem;
+    width: 100%;
+    margin: 0 auto;
 }
 
 .copyright {
-    width: 100%;
-    text-align: center;
-    padding: 0 2.5rem;
+    width: 100%;    
     font-size: 1rem;
     font-weight: $weight-light;
 }
@@ -82,6 +88,9 @@ footer {
     font-size: 1.25rem;
     font-weight: $weight-light;
     line-height: 160%;
+    flex-grow: 0;
+    flex-shrink: 0;
+    flex-basis: auto;
 }
 
 .social-links {
@@ -163,7 +172,7 @@ footer {
     }
 
     .headlines, .address, .mission {
-    display: none;
+        display: none;
     }
 
     .brand {
@@ -176,7 +185,6 @@ footer {
         justify-content: center;
         width: 100%;
         padding: 0;
-        margin-top: 1rem;
     }
 }
 </style>
