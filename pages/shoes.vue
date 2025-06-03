@@ -1,5 +1,6 @@
 <template>
   <div class="shoes">
+    <h1 class="headline">Shoes collection</h1>
     <ProductList 
     :filterCategory="'shoes'" 
     :minPrice="0" 
@@ -21,6 +22,14 @@ const openProductPage = (id: string) => {
 </script>
 
 <style lang="scss" scoped>
+.headline {
+  text-align: center;
+  margin: 3rem 0;
+  font-size: 2rem;
+  color: $primary-color;
+  font-family: $font-secondary;
+}
+
 .shoes {
   margin: 0 auto;
   width: 90%;
@@ -35,5 +44,11 @@ const openProductPage = (id: string) => {
     align-items: center;
     margin-top: -2rem;
   }
+
+  .headline {
+    font-size: 1.75rem;
+    margin-top: 2rem;
+    margin-bottom: 0;
+  } 
 }
 </style>
