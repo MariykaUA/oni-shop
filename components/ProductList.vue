@@ -121,7 +121,6 @@ const filteredProducts = computed(() => {
   display: block;
   width: 300px;
   height: 300px;
-  background-color: rgb(159, 159, 159);
   flex-shrink: 0;
   object-fit: cover;
 }
@@ -133,7 +132,7 @@ const filteredProducts = computed(() => {
 
 .product-price {
   font-size: 1.25rem;
-  color: rgb(176, 82, 34);
+  color: $price;
 }
 
 .product-price-stock {
@@ -143,7 +142,7 @@ const filteredProducts = computed(() => {
 }
 
 .in-stock {
-  color: rgb(40, 156, 40);
+  color: $in-stock;
 }
 
 @include until('small') {

@@ -113,6 +113,7 @@ watch(maxPrice, (val) => emit('update:maxPrice', val))
 .types-list {
     display: flex;
     flex-direction: row;
+    font-size: 1rem;
     flex-wrap: wrap;
     gap: 1rem;
     justify-content: center;

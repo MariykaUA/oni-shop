@@ -7,11 +7,43 @@
         :alt="product.name" />
             
         <div class="product-info">
-            <h2>{{ product.name }}</h2>
-            <p>Price: {{ product.price }}$</p>
-            <p v-if="product.inStock">In stock</p>
-            <p v-else>Out of stock</p>
-            <p>Category: {{ product.category }}</p>
+            <h2 class="product-name">{{ product.name }}</h2>
+
+            <div class="price-stock">
+              <p class="price">{{ product.price }}$</p>
+              <p v-if="product.inStock" 
+              class="in-stock">In stock</p>
+              <p v-else>Out of stock</p>
+            </div>
+
+            <div class="category">
+              <h3 class="title">Category:</h3>
+              <p class="text">{{ product.category }}</p>
+            </div>
+
+            <div class="colors"> 
+              <p v-if="product.colors?.length" class="title">Available Colors:</p>
+              <ul v-if="product.colors?.length" 
+                  class="color-list">
+                <li v-for="color in product.colors" 
+                    :key="color.name"
+                    class="item-color">
+                      <img 
+                      :src="color.image" 
+                      :alt="color.name" 
+                      class="img-color" />
+                      {{ color.name }}
+                </li>
+              </ul>
+            </div>
+
+            <div class="actions">
+              <AddToCartButton />
+              <Wishlist />wish
+              <button>Share</button>
+            </div>
+
+            <p class="shipping-msg">Free shipping on all orders over $60!</p>
         </div>
     </div>
 
@@ -33,6 +65,8 @@ import { doc, getDoc } from 'firebase/firestore'
 import { useRoute } from 'vue-router'
 import { db } from '../../assets/firebase'
 import type { Product } from '../../components/ProductList.vue'
+import AddToCartButton from '../../components/buttons/AddToCartButton.vue'
+import Wishlist from '../../components/icons/Wishlist.vue'
 
 const error = ref(false)
 const product = ref<Product | null>(null)
@@ -62,20 +96,104 @@ onMounted(async () => {
 .product-container {
     display: flex;
     flex-direction: row;
-    justify-content: center;
-    align-items: center;
-    gap: 2rem;
-    margin: 3rem 0;
+    justify-content: flex-start;
+    align-items: flex-start;
+    gap: 4rem;
+    margin: 3rem 10rem;
 }
 
 .product-image {
+    display: block;
+    width: 300px;
+    height: 400px;
+    max-height: 400px;
+    object-fit: cover;
+    flex-shrink: 0;
     max-width: 400px;
-    height: auto;
 }
 
 .product-info {
     display: flex;
     flex-direction: column;
     gap: 1.5rem;
+}
+
+.price {
+  color: $price;
+  font-size: 1.75rem;
+}
+
+.in-stock {
+  color: $in-stock;
+}
+
+.price-stock {
+  display: flex;
+  flex-direction: row;
+  gap: 1.2rem;
+  align-items: center;
+}
+
+.shipping-msg {
+  font-size: 1rem;
+  color: $grey;
+}
+
+.product-name {
+  font-size: 2.5rem;
+  font-weight: $weight-medium;
+  font-family: $font-secondary;
+}
+
+.actions {
+  display: flex;
+  flex-direction: row;
+  gap: 1rem;
+}
+
+.colors {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.color-list {
+  display: flex;
+  flex-direction: row;
+  gap: 2rem;
+  list-style-type: none;
+  padding: 0;
+}
+
+.item-color {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  align-items: center;
+}
+
+.img-color {
+    display: block;
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+    border-radius: 8px;
+}
+
+.category {
+  display: flex;
+  flex-direction: row;
+  gap: 1.8rem;
+  align-items: center;
+}
+
+.title {
+  font-weight: $weight-medium;
+  font-size: 1.5rem;
+  font-family: $font-secondary;
+}
+
+.text {
+  font-size: 1.25rem;
 }
 </style>
