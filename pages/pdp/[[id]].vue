@@ -76,6 +76,10 @@
         <p>Sorry, the product you are looking for could not be found.</p>
         <button>Back to Products</button>
     </div>
+
+    <div class="description">
+      <ProductDescription />
+    </div>
   </div>
 </template>
 
@@ -91,6 +95,7 @@ import Share from '../../components/icons/Share.vue'
 import RightArrowButton from '../../components/buttons/RightArrowButton.vue'
 import Sizes from '~/components/Sizes.vue'
 import Quantity from '~/components/Quantity.vue'
+import ProductDescription from '~/components/ProductDescription.vue'
 
 const error = ref(false)
 const product = ref<Product | null>(null)
@@ -117,13 +122,20 @@ onMounted(async () => {
 </script>
 
 <style lang="scss" scoped>
+.pdp-wrapper {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    margin: 3rem 8rem;
+    gap: 3rem;
+}
+
 .product-container {
     display: flex;
     flex-direction: row;
     justify-content: flex-start;
     align-items: flex-start;
     gap: 4rem;
-    margin: 3rem 10rem;
 }
 
 .product-image {
@@ -251,5 +263,17 @@ onMounted(async () => {
   flex-direction: row;
   gap: 1.75rem;
   align-items: center;
+}
+
+.description {
+  border-left: 1px solid $primary-color;
+  padding-left: 2rem;
+  height: 548px;
+  opacity: 0.15; 
+  transition: opacity 0.6s ease-in-out; 
+
+  &:hover {
+    opacity: 1;
+  }
 }
 </style>

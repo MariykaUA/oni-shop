@@ -47,6 +47,7 @@ export interface Product {
   price: number;
   inStock: boolean;
   category: string;
+  description: string;
 }
 
 const props = defineProps<{
