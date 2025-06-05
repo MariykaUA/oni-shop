@@ -99,12 +99,29 @@ watch(maxPrice, (val) => emit('update:maxPrice', val))
 }
 
 @include until('small') {
-.types {
+.headline{
     display: none;
+  }
+
+.types {
+    padding: 0;
+    margin-bottom: 0;
+    margin-top: 1rem;
+    background-color: transparent;
+  }
+
+.types-list {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 1rem;
+    justify-content: center;
+    align-items: center;
   }
 
 .price {
     display: none;
   }
+
 }
 </style>
