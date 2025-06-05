@@ -1,50 +1,70 @@
 <template>
   <div class="pdp-wrapper">
     <div v-if="product" class="product-container">
+
+      <div class="product-pictures">
         <img 
         class="product-image"
         :src="product.colors?.[0]?.image || product.image"
         :alt="product.name" />
+        
+        <ul v-if="product.colors?.length" class="images-list">
+            <li v-for="color in product.colors" 
+                :key="color.name"
+                class="additional-images">
+                <img 
+                :src="color.image" 
+                alt="additional product" 
+                class="additional-image" />
+            </li>
+            <li><RightArrowButton /></li>
+        </ul>
+      </div>
             
-        <div class="product-info">
-            <h2 class="product-name">{{ product.name }}</h2>
+      <div class="product-info">
+          <h2 class="product-name">{{ product.name }}</h2>
 
-            <div class="price-stock">
-              <p class="price">{{ product.price }}$</p>
-              <p v-if="product.inStock" 
+          <div class="price-stock">
+            <p class="price">{{ product.price }}$</p>
+            <p v-if="product.inStock" 
               class="in-stock">In stock</p>
-              <p v-else>Out of stock</p>
-            </div>
+            <p v-else>Out of stock</p>
+          </div>
 
-            <div class="category">
-              <h3 class="title">Category:</h3>
-              <p class="text">{{ product.category }}</p>
-            </div>
+          <div class="category">
+            <h3 class="title">Category:</h3>
+            <p class="text">{{ product.category }}</p>
+          </div>
 
-            <div class="colors"> 
-              <p v-if="product.colors?.length" class="title">Available Colors:</p>
-              <ul v-if="product.colors?.length" 
-                  class="color-list">
-                <li v-for="color in product.colors" 
-                    :key="color.name"
-                    class="item-color">
-                      <img 
-                      :src="color.image" 
-                      :alt="color.name" 
-                      class="img-color" />
-                      {{ color.name }}
-                </li>
-              </ul>
-            </div>
+          <div class="colors"> 
+            <p v-if="product.colors?.length" class="title">Available Colors:</p>
+            <ul v-if="product.colors?.length" 
+                class="color-list">
+              <li v-for="color in product.colors" 
+                  :key="color.name"
+                  class="item-color">
+                    <img 
+                    :src="color.image" 
+                    :alt="color.name" 
+                    class="img-color" />
+                    {{ color.name }}
+              </li>
+            </ul>
+          </div>
 
-            <div class="actions">
-              <AddToCartButton />
-              <Wishlist />wish
-              <button>Share</button>
-            </div>
+          <div class="size-quantity">
+            <Sizes />
+            <Quantity />
+          </div>
 
-            <p class="shipping-msg">Free shipping on all orders over $60!</p>
-        </div>
+          <div class="actions">
+            <AddToCartButton />
+            <Wishlist />
+            <Share />
+          </div>
+
+          <p class="shipping-msg">Free shipping on all orders over $60!</p>
+      </div>
     </div>
 
     <div v-else-if="!error">
@@ -67,6 +87,10 @@ import { db } from '../../assets/firebase'
 import type { Product } from '../../components/ProductList.vue'
 import AddToCartButton from '../../components/buttons/AddToCartButton.vue'
 import Wishlist from '../../components/icons/Wishlist.vue'
+import Share from '../../components/icons/Share.vue'
+import RightArrowButton from '../../components/buttons/RightArrowButton.vue'
+import Sizes from '~/components/Sizes.vue'
+import Quantity from '~/components/Quantity.vue'
 
 const error = ref(false)
 const product = ref<Product | null>(null)
@@ -149,6 +173,17 @@ onMounted(async () => {
   display: flex;
   flex-direction: row;
   gap: 1rem;
+  align-items: center;
+}
+
+.images-list {
+  display: flex;
+  flex-direction: row;
+  gap: 0.75rem;
+  list-style-type: none;
+  padding: 0;
+  align-items: center;
+  justify-content: flex-start;
 }
 
 .colors {
@@ -180,6 +215,18 @@ onMounted(async () => {
     border-radius: 8px;
 }
 
+.additional-image {
+  width: 120px; 
+  height: 120px;
+  object-fit: cover;
+}
+
+.product-pictures {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
 .category {
   display: flex;
   flex-direction: row;
@@ -195,5 +242,14 @@ onMounted(async () => {
 
 .text {
   font-size: 1.25rem;
+  letter-spacing: 0.75px;
+  font-weight: $weight-normal;
+}
+
+.size-quantity {
+  display: flex;
+  flex-direction: row;
+  gap: 1.75rem;
+  align-items: center;
 }
 </style>
