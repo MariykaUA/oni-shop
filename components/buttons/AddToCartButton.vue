@@ -18,4 +18,10 @@ button {
         background-color: darken($primary-color, 10%);
     }
 }
+
+@include until('small') {
+    button {
+        padding: 0.75rem 5.5rem;
+    }
+}
 </style>

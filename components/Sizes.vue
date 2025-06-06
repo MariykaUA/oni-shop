@@ -1,6 +1,6 @@
 <template>
     <div class="sizes">
-        <h3 class="title">Sizes:</h3>
+        <h3 class="title">Size:</h3>
 
         <div class="select">
             <button @click="showSizes" class="select-btn">
@@ -138,6 +138,25 @@ const sizes = ['XS', 'S', 'M', 'L', 'XL'];
     &:hover {
         text-decoration: underline;
         text-underline-offset: 4px;
+    }
+}
+
+@include until('small') {
+    .title {
+        font-size: 1.25rem;
+    }
+
+    .item-size {
+        font-size: 0.875rem;
+    }
+
+    .clear-btn {
+        font-size: 0.875rem;
+    }
+
+    .sizes {
+        flex-direction: column;
+        align-items: flex-start;
     }
 }
 </style>

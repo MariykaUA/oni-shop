@@ -53,4 +53,17 @@ onMounted(async () => {
     line-height: 1.6;
     letter-spacing: 0.5px;
 }
+
+@include until('small') {
+    .title {
+        text-align: center;
+        padding-top: 1rem;
+    }
+
+    .description {
+        width: 100%;
+        padding-left: 0;
+        text-align: center;
+    }
+}
 </style>

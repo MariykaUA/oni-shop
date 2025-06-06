@@ -84,5 +84,11 @@ const openProductPage = (id: string) => {
   .product-list-wrapper {
     margin-left: 0;
   }
+
+  .products {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
 }
 </style>

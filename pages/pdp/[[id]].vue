@@ -47,7 +47,7 @@
                     :src="color.image" 
                     :alt="color.name" 
                     class="img-color" />
-                    {{ color.name }}
+                    <p class="color-name">{{ color.name }}</p>
               </li>
             </ul>
           </div>
@@ -74,7 +74,6 @@
     <div v-else>
         <h1>Product Not Found</h1>
         <p>Sorry, the product you are looking for could not be found.</p>
-        <button>Back to Products</button>
     </div>
 
     <div class="description">
@@ -274,6 +273,133 @@ onMounted(async () => {
 
   &:hover {
     opacity: 1;
+  }
+}
+
+@include until('small') {
+  .pdp-wrapper {
+    flex-direction: column;
+    align-items: center;
+    margin: 0 1rem;
+  }
+
+  .product-container {
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+  }
+
+  .product-image {
+    width: 366px;
+    height: auto;
+    max-width: 400px;
+  }
+
+  .product-info {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    gap: 1rem;
+  }
+
+  .images-list {
+    display: none;
+  }
+
+  .additional-image {
+    width: 80px; 
+    height: 80px;
+  }
+
+  .product-name {
+    flex-wrap: nowrap;
+    order: 1;
+    font-size: 1.75rem;
+    width: 63%;
+    margin-right: 2.5rem;
+  }
+
+  .color-name {
+    display: none;
+  }
+
+  .price-stock {
+    order: 2;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: flex-end;
+    width: fit-content;
+  }
+
+  .price {
+    font-size: 1.3rem;
+    margin-top: 2px;
+    text-align: end;
+  }
+
+  .in-stock {
+    display: none;
+  }
+
+  .category {
+    display: none;
+  }
+
+  .colors {
+    order: 4;
+    align-items: center;
+  }
+
+  .color-list {
+    margin-left: 2rem;
+    flex-direction: column;
+    flex-wrap: wrap;
+    gap: 1rem;
+    margin-top: 0.6rem;
+  }
+
+  .item-color .name{
+    display: none;
+  }
+
+  .img-color {
+    width: 140px;
+    height: 80px;
+  }
+
+  .size-quantity {
+    order: 3;
+    width: fit-content;
+    gap: 1rem;
+    flex-direction: column;
+    margin-left: 2rem;
+    margin-top: 0.5rem;
+  }
+
+  .actions {
+    order: 5;
+    justify-content: center;
+    margin-top: 1rem;
+  }
+
+  .shipping-msg {
+    order: 6;
+  }
+
+  .title {
+    display: none;
+  }
+
+  .description {
+    border-left: none;
+    text-align: center;
+    padding: 0;
+    opacity: calc(1 - 0.15); 
+    border-top: 1px solid $primary-color;
+    height: auto;
   }
 }
 </style>

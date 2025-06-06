@@ -100,4 +100,16 @@ if (props.initialQuantity) {
     display: flex;
     flex-direction: column;
 }
+
+
+@include until('small') {
+  .quantity-container {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .title {
+    font-size: 1.25rem;
+  }
+}
 </style>

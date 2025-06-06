@@ -147,9 +147,9 @@ const filteredProducts = computed(() => {
 }
 
 @include until('small') {
+
   .product-list {
     width: 300px;
-
   }
 
   .product-item {
