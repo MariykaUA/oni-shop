@@ -47,6 +47,7 @@ export interface Product {
   price: number;
   inStock: boolean;
   category: string;
+  description: string;
 }
 
 const props = defineProps<{
@@ -146,9 +147,9 @@ const filteredProducts = computed(() => {
 }
 
 @include until('small') {
+
   .product-list {
     width: 300px;
-
   }
 
   .product-item {

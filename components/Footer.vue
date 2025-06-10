@@ -28,9 +28,9 @@
             <div class="information">
                 <h4 class="headlines">INFORMATION</h4>
                 <ul class="info-links">
-                    <li><NuxtLink class="navlink" to="/about">About Us</NuxtLink></li>
-                    <li><NuxtLink class="navlink" to="/privacy">Privacy Policy</NuxtLink></li>
-                    <li><NuxtLink class="navlink" to="/terms">Terms of Service</NuxtLink></li>
+                    <li><NuxtLink class="navlink" >About Us</NuxtLink></li>
+                    <li><NuxtLink class="navlink" >Privacy Policy</NuxtLink></li>
+                    <li><NuxtLink class="navlink" >Terms of Service</NuxtLink></li>
                 </ul>
             </div>
 

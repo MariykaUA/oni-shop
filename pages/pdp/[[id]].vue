@@ -1,50 +1,70 @@
 <template>
   <div class="pdp-wrapper">
     <div v-if="product" class="product-container">
+
+      <div class="product-pictures">
         <img 
         class="product-image"
         :src="product.colors?.[0]?.image || product.image"
         :alt="product.name" />
+        
+        <ul v-if="product.colors?.length" class="images-list">
+            <li v-for="color in product.colors" 
+                :key="color.name"
+                class="additional-images">
+                <img 
+                :src="color.image" 
+                alt="additional product" 
+                class="additional-image" />
+            </li>
+            <li><RightArrowButton /></li>
+        </ul>
+      </div>
             
-        <div class="product-info">
-            <h2 class="product-name">{{ product.name }}</h2>
+      <div class="product-info">
+          <h2 class="product-name">{{ product.name }}</h2>
 
-            <div class="price-stock">
-              <p class="price">{{ product.price }}$</p>
-              <p v-if="product.inStock" 
+          <div class="price-stock">
+            <p class="price">{{ product.price }}$</p>
+            <p v-if="product.inStock" 
               class="in-stock">In stock</p>
-              <p v-else>Out of stock</p>
-            </div>
+            <p v-else>Out of stock</p>
+          </div>
 
-            <div class="category">
-              <h3 class="title">Category:</h3>
-              <p class="text">{{ product.category }}</p>
-            </div>
+          <div class="category">
+            <h3 class="title">Category:</h3>
+            <p class="text">{{ product.category }}</p>
+          </div>
 
-            <div class="colors"> 
-              <p v-if="product.colors?.length" class="title">Available Colors:</p>
-              <ul v-if="product.colors?.length" 
-                  class="color-list">
-                <li v-for="color in product.colors" 
-                    :key="color.name"
-                    class="item-color">
-                      <img 
-                      :src="color.image" 
-                      :alt="color.name" 
-                      class="img-color" />
-                      {{ color.name }}
-                </li>
-              </ul>
-            </div>
+          <div class="colors"> 
+            <p v-if="product.colors?.length" class="title">Available Colors:</p>
+            <ul v-if="product.colors?.length" 
+                class="color-list">
+              <li v-for="color in product.colors" 
+                  :key="color.name"
+                  class="item-color">
+                    <img 
+                    :src="color.image" 
+                    :alt="color.name" 
+                    class="img-color" />
+                    <p class="color-name">{{ color.name }}</p>
+              </li>
+            </ul>
+          </div>
 
-            <div class="actions">
-              <AddToCartButton />
-              <Wishlist />wish
-              <button>Share</button>
-            </div>
+          <div class="size-quantity">
+            <Sizes />
+            <Quantity />
+          </div>
 
-            <p class="shipping-msg">Free shipping on all orders over $60!</p>
-        </div>
+          <div class="actions">
+            <AddToCartButton />
+            <Wishlist />
+            <Share />
+          </div>
+
+          <p class="shipping-msg">Free shipping on all orders over $60!</p>
+      </div>
     </div>
 
     <div v-else-if="!error">
@@ -54,7 +74,10 @@
     <div v-else>
         <h1>Product Not Found</h1>
         <p>Sorry, the product you are looking for could not be found.</p>
-        <button>Back to Products</button>
+    </div>
+
+    <div class="description">
+      <ProductDescription />
     </div>
   </div>
 </template>
@@ -67,6 +90,11 @@ import { db } from '../../assets/firebase'
 import type { Product } from '../../components/ProductList.vue'
 import AddToCartButton from '../../components/buttons/AddToCartButton.vue'
 import Wishlist from '../../components/icons/Wishlist.vue'
+import Share from '../../components/icons/Share.vue'
+import RightArrowButton from '../../components/buttons/RightArrowButton.vue'
+import Sizes from '~/components/Sizes.vue'
+import Quantity from '~/components/Quantity.vue'
+import ProductDescription from '~/components/ProductDescription.vue'
 
 const error = ref(false)
 const product = ref<Product | null>(null)
@@ -93,13 +121,20 @@ onMounted(async () => {
 </script>
 
 <style lang="scss" scoped>
+.pdp-wrapper {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    margin: 3rem 8rem;
+    gap: 3rem;
+}
+
 .product-container {
     display: flex;
     flex-direction: row;
     justify-content: flex-start;
     align-items: flex-start;
     gap: 4rem;
-    margin: 3rem 10rem;
 }
 
 .product-image {
@@ -149,6 +184,17 @@ onMounted(async () => {
   display: flex;
   flex-direction: row;
   gap: 1rem;
+  align-items: center;
+}
+
+.images-list {
+  display: flex;
+  flex-direction: row;
+  gap: 0.75rem;
+  list-style-type: none;
+  padding: 0;
+  align-items: center;
+  justify-content: flex-start;
 }
 
 .colors {
@@ -180,6 +226,18 @@ onMounted(async () => {
     border-radius: 8px;
 }
 
+.additional-image {
+  width: 120px; 
+  height: 120px;
+  object-fit: cover;
+}
+
+.product-pictures {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
 .category {
   display: flex;
   flex-direction: row;
@@ -195,5 +253,153 @@ onMounted(async () => {
 
 .text {
   font-size: 1.25rem;
+  letter-spacing: 0.75px;
+  font-weight: $weight-normal;
+}
+
+.size-quantity {
+  display: flex;
+  flex-direction: row;
+  gap: 1.75rem;
+  align-items: center;
+}
+
+.description {
+  border-left: 1px solid $primary-color;
+  padding-left: 2rem;
+  height: 548px;
+  opacity: 0.15; 
+  transition: opacity 0.6s ease-in-out; 
+
+  &:hover {
+    opacity: 1;
+  }
+}
+
+@include until('small') {
+  .pdp-wrapper {
+    flex-direction: column;
+    align-items: center;
+    margin: 0 1rem;
+  }
+
+  .product-container {
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+  }
+
+  .product-image {
+    width: 366px;
+    height: auto;
+    max-width: 400px;
+  }
+
+  .product-info {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    gap: 1rem;
+  }
+
+  .images-list {
+    display: none;
+  }
+
+  .additional-image {
+    width: 80px; 
+    height: 80px;
+  }
+
+  .product-name {
+    flex-wrap: nowrap;
+    order: 1;
+    font-size: 1.75rem;
+    width: 63%;
+    margin-right: 2.5rem;
+  }
+
+  .color-name {
+    display: none;
+  }
+
+  .price-stock {
+    order: 2;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: flex-end;
+    width: fit-content;
+  }
+
+  .price {
+    font-size: 1.3rem;
+    margin-top: 2px;
+    text-align: end;
+  }
+
+  .in-stock {
+    display: none;
+  }
+
+  .category {
+    display: none;
+  }
+
+  .colors {
+    order: 4;
+    align-items: center;
+  }
+
+  .color-list {
+    margin-left: 2rem;
+    flex-direction: column;
+    flex-wrap: wrap;
+    gap: 1rem;
+    margin-top: 0.6rem;
+  }
+
+  .item-color .name{
+    display: none;
+  }
+
+  .img-color {
+    width: 140px;
+    height: 80px;
+  }
+
+  .size-quantity {
+    order: 3;
+    width: fit-content;
+    gap: 1rem;
+    flex-direction: column;
+    margin-left: 2rem;
+    margin-top: 0.5rem;
+  }
+
+  .actions {
+    order: 5;
+    justify-content: center;
+    margin-top: 1rem;
+  }
+
+  .shipping-msg {
+    order: 6;
+  }
+
+  .title {
+    display: none;
+  }
+
+  .description {
+    border-left: none;
+    text-align: center;
+    padding: 0;
+    opacity: calc(1 - 0.15); 
+    border-top: 1px solid $primary-color;
+    height: auto;
+  }
 }
 </style>
